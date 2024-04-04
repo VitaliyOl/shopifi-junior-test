@@ -12,7 +12,24 @@
               {% assign product = block.settings.proposal_product %}
 
               <div class="slider-product-proposal__slider-item">
+                <a href="{{ product.url }}" class="slider-item__link"> </a>
+                <div class="slider-item__image">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 350 }}"
+                    alt="{{ product.featured_image.alt | default: product.title }}"
+                    class="slider-item__picture"
+                    loading="lazy"
+                  >
+                </div>
                 <h4 class="slider-item__title">{{ product.title }}</h4>
+                {% if product.content != blank %}
+                  <div class="slider-item__content">
+                    {{ product.content | truncate: 120, '...' }}
+                  </div>
+                {% endif %}
+                <div class="slider-item__price">
+                  {{ product.price | money_with_currency }}
+                </div>
               </div>
             {% endif %}
           {% endfor %}
@@ -31,7 +48,24 @@
     $('#shopify-section-{{section.id}} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
-      slidesToScroll: 3,
+      slidesToScroll: 2,
+       speed: 1000,
+       responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: {{ section.settings.slider_items_tab }},
+        slidesToScroll: {{ section.settings.slider_items_tab }}
+      }
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
     });
   });
 </script>
@@ -47,6 +81,15 @@
       "id": "slider_items",
       "min": 1,
       "max": 5,
+      "step": 1,
+      "label": "items per page",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "slider_items_tab",
+      "min": 1,
+      "max": 4,
       "step": 1,
       "label": "items per page",
       "default": 2
