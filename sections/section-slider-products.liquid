@@ -1,47 +1,40 @@
 {% if section.blocks.size > 0 %}
-<div class="slider-product-proposal">
- <div class="page-width slider-product-proposal__container">
- <div class="slider-product-proposal__content">
- <h2 class="page-width slider-product-proposal__title"> Product title</h2>
- <div class="slider-product-proposal__subtitle">Product subtitle</div>
-</div>
-<div class="slider-product-proposal__slider">
-<div class="slider-product-proposal__slider-list">
+  <div class="slider-product-proposal">
+    <div class="page-width slider-product-proposal__container">
+      <div class="slider-product-proposal__content">
+        <h2 class="page-width slider-product-proposal__title">Product title</h2>
+        <div class="slider-product-proposal__subtitle">Product subtitle</div>
+      </div>
+      <div class="slider-product-proposal__slider">
+        <div class="slider-product-proposal__slider-list">
+          {% for block in section.blocks %}
+            {% if block.settings.proposal_product != blank %}
+              {% assign product = block.settings.proposal_product %}
 
-{% for block in section.blocks %}
-
-{% if block.settings.proposal_product != blank %}
-
-{% assign product = block.settings.proposal_product %}
-
-<div class="slider-product-proposal__slider-item">
-<h4 class="slider-item__title">{{ product.title }}</h4>
-</div>
-
+              <div class="slider-product-proposal__slider-item">
+                <h4 class="slider-item__title">{{ product.title }}</h4>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endif %}
-
-{% endfor %}
-
-</div>
-</div>
-</div>
-</div>
-{% endif %}
-
-
 
 {{ 'slick.css' | asset_url | stylesheet_tag }}
 
- <script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-   $('#shopify-section-{{section.id}} .slider-product-proposal__slider-list').slick()
-});
- 
-  </script>
-
-
+<script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#shopify-section-{{section.id}} .slider-product-proposal__slider-list').slick({
+      infinite: true,
+      slidesToShow: {{ section.settings.slider_items }},
+      slidesToScroll: 3,
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -49,7 +42,15 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    
+    {
+      "type": "range",
+      "id": "slider_items",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "items per page",
+      "default": 2
+    }
   ],
   "blocks": [
     {
@@ -57,11 +58,10 @@
       "name": "Proposal product",
       "settings": [
         {
-  "type": "product",
-  "id": "proposal_product",
-  "label": "Our proposal Product"
-}
-
+          "type": "product",
+          "id": "proposal_product",
+          "label": "Our proposal Product"
+        }
       ]
     }
   ],
