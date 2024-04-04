@@ -39,52 +39,6 @@
         "show_text_below": false
       }
     },
-    "image_with_text_iKNM9c": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_FQCe8C": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_YHb6Jk": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "button_nBUXbf": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_FQCe8C",
-        "text_YHb6Jk",
-        "button_nBUXbf"
-      ],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "section_slider_products_4MzfmH": {
       "type": "section-slider-products",
       "blocks": {
@@ -127,13 +81,65 @@
         "product_fNKhdz"
       ],
       "settings": {
-        "include_margins": false
+        "slider_items": 4
+      }
+    },
+    "section_slider_products_ETyV8X": {
+      "type": "section-slider-products",
+      "blocks": {
+        "product_kMRmzd": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "eam-t-shirt"
+          }
+        },
+        "product_VCPxVC": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "example-t-shirt"
+          }
+        },
+        "product_3Hkfxh": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "relaxed-fit-revolted-sd-mavis"
+          }
+        },
+        "product_YCPGmf": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "exam-hat"
+          }
+        },
+        "product_TAQBE7": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "sneakers-de-sport-running"
+          }
+        },
+        "product_tkERqa": {
+          "type": "product",
+          "settings": {
+            "proposal_product": "sprite-yoga-softy-set"
+          }
+        }
+      },
+      "block_order": [
+        "product_kMRmzd",
+        "product_VCPxVC",
+        "product_3Hkfxh",
+        "product_YCPGmf",
+        "product_TAQBE7",
+        "product_tkERqa"
+      ],
+      "settings": {
+        "slider_items": 2
       }
     }
   },
   "order": [
     "image_banner",
-    "image_with_text_iKNM9c",
-    "section_slider_products_4MzfmH"
+    "section_slider_products_4MzfmH",
+    "section_slider_products_ETyV8X"
   ]
 }
