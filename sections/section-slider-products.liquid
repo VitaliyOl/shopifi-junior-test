@@ -48,13 +48,13 @@
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    $('#shopify-section-   {{ section.id }} .slider-product-proposal__slider-list').slick({
+    $('#shopify-section-{{ section.id }} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
       slidesToScroll: 2,
       speed: 1000,
-      prevArrow: $('#shopify-section-   {{ section.id }} .control-prev'),
-      nextArrow: $('#shopify-section-   {{ section.id }} .control-next'),
+      prevArrow: $('#shopify-section-{{ section.id }} .control-prev'),
+      nextArrow: $('#shopify-section-{{ section.id }} .control-next'),
       responsive: [
         {
           breakpoint: 1024,
@@ -62,7 +62,8 @@
             slidesToShow: {{ section.settings.slider_items_tab }},
             slidesToScroll: {{ section.settings.slider_items_tab }}
           }
-        }, {
+        }, 
+        {
           breakpoint: 576,
           settings: {
             slidesToShow: 1,
@@ -88,7 +89,8 @@
         "step": 1,
         "label": "items per page",
         "default": 4
-      }, {
+      }, 
+      {
         "type": "range",
         "id": "slider_items_tab",
         "min": 1,
