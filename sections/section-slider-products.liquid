@@ -35,6 +35,10 @@
           {% endfor %}
         </div>
       </div>
+      <div class="slider-product-proposal__control">
+        <button type="button" class="slick-arrow slick-prev arrow-control  control-prev">Previous</button>
+        <button type="button" class="slick-arrow slick-next arrow-control control-next">Next</button>
+      </div>
     </div>
   </div>
 {% endif %}
@@ -45,11 +49,13 @@
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    $('#shopify-section-{{section.id}} .slider-product-proposal__slider-list').slick({
+    $('#shopify-section-{{ section.id }} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
       slidesToScroll: 2,
        speed: 1000,
+       prevArrow: $('#shopify-section-{{ section.id }} .control-prev'),
+       nextArrow: $('#shopify-section-{{ section.id }} .control-next'),
        responsive: [
     {
       breakpoint: 1024,
