@@ -14,7 +14,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -81,7 +81,8 @@
         "product_fNKhdz"
       ],
       "settings": {
-        "slider_items": 4
+        "slider_items": 4,
+        "slider_items_tab": 2
       }
     },
     "section_slider_products_ETyV8X": {
@@ -133,13 +134,21 @@
         "product_tkERqa"
       ],
       "settings": {
-        "slider_items": 2
+        "slider_items": 2,
+        "slider_items_tab": 2
+      }
+    },
+    "image_get_links_9eaDtj": {
+      "type": "image-get-links",
+      "settings": {
+        "get_image_v_1": "shopify://shop_images/abs-workout-tire.jpg"
       }
     }
   },
   "order": [
     "image_banner",
     "section_slider_products_4MzfmH",
-    "section_slider_products_ETyV8X"
+    "section_slider_products_ETyV8X",
+    "image_get_links_9eaDtj"
   ]
 }
