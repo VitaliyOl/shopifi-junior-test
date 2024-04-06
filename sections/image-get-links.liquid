@@ -1,5 +1,131 @@
 <div class="page-width">
+  {% if section.settings.get_image_v_1 != blank %}
+    <div id="get_image_v_1" style="padding: 5px; margin: 5px; border: 1px solid black;">
+      <h2>get_image_v_1</h2>
+      <div style="border: 1px linear blue;">
+        section.settings.get_image_v_1 == {{ section.settings.get_image_v_1 }}
+        <br>
+        section.settings.get_image_v_1 | img_url: 'icon' == {{ section.settings.get_image_v_1 | img_url: 'icon' }}
+        <br>
+        section.settings.get_image_v_1 | img_url: '33x' == {{ section.settings.get_image_v_1 | img_url: '33x' }}
+        <br>
+        section.settings.get_image_v_1 | img_url: '33x' | img_tag == {{ section.settings.get_image_v_1 | img_url: '33x' | img_tag }}
+        <div style="border: 1px solid green;">
+          <img src="{{ section.settings.get_image_v_1 | img_url: 'icon' }}" alt="{{ section.settings.get_image_v_1.alt }}">
 
+          <br>
+          <img src="{{ section.settings.get_image_v_1 | img_url: '500x' }}" alt="{{ section.settings.get_image_v_1.alt }}">
+          <br>
+          <img src="{{ section.settings.get_image_v_1 | img_url: 'large' }}" alt="{{ section.settings.get_image_v_1.alt }}">
+          <br>
+          {{ section.settings.get_image_v_1 | img_url: '500x' | img_tag: section.settings.get_image_v_1.alt }}
+          <br>
+          {{ section.settings.get_image_v_1 | image_url: width: 500 | image_tag: loading: 'lazy' }}
+        </div>
+      </div>
+    </div>
+    <div id="get_image_v_2" style="padding: 5px; margin: 5px; border: 1px solid black;">
+      <h2>get_image_v_2</h2>
+      {% if section.settings.get_image_v_2 != blank %}
+        <h3>Have image</h3>
+      {% else %}
+        <h3>Haven't images</h3>
+
+      {% endif %}
+      section.settings.get_image_v_2 == {{ section.settings.get_image_v_2 }}
+      <br>
+      section.settings.get_image_v_2 | img_url: 'icon' == {{ section.settings.get_image_v_2 | img_url: 'icon' }}
+      <br>
+      section.settings.get_image_v_2 | img_url: '33x' == {{ section.settings.get_image_v_2 | img_url: '33x' }}
+      <br>
+      section.settings.get_image_v_2 | img_url: '33x' | img_tag == {{ section.settings.get_image_v_2 | img_url: '33x' | img_tag }}
+      <br>
+      <img src="{{ section.settings.get_image_v_2 | img_url: 'medium' }}" alt="{{ section.settings.get_image_v_2.alt }}">
+      <br>
+      {{ section.settings.get_image_v_2 | img_url: '150x' | img_tag: section.settings.get_image_v_2.alt }}
+    </div>
+
+    <div id="get_image_v_3">
+      <h3>get image_v_3 assets</h3>
+      <div style="border: 1px solid tomato;">
+        'image_leopard-assets.jpg' = {{ 'image_leopard-assets.jpg' }}
+        <br>
+        'image_leopard-assets.jpg' | asset_url = {{ 'image_leopard-assets.jpg' | asset_url }}
+        <br>
+        'image_leopard-assets.jpg' | asset_img_url: 'master' = {{ 'image_leopard-assets.jpg' | asset_img_url: 'master' }}
+        <br>
+        'image_leopard-assets.jpg' | asset_img_url: '200x' = {{ 'image_leopard-assets.jpg' | asset_img_url: '200x' }}
+        <br>
+        <img src="{{ 'image_leopard-assets.jpg' | asset_img_url: 'medium' }}">
+        <br>
+        {{ 'image_leopard-assets.jpg' | asset_img_url: '150x' | img_tag }}
+
+      </div>
+
+
+    </div>
+    <div id="get_image_v_4">
+      <h3>get image_v_4 assets</h3>
+      <div style="border: 1px solid tomato;">
+        'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' = {{ 'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' }}
+        <br>
+        <img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456" alt="image_leopard-files">
+        <br>
+        {{ 'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' | img_tag }}
+        <br>
+        {{ 'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' | img_url: '150x' | img_tag }}
+      </div>
+
+
+    </div>
+
+    <div id="get_image_v_5">
+      <h3>get image_v_5 assets</h3>
+      <div style="border: 1px solid tomato;"></div>
+      <div id="get_image_v_5_1" style="border: 1px solid blue;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><circle cx="256" cy="256" r="256" fill="#000000" opacity="1" data-original="#000000" class=""></circle><g fill="#fff"><path d="m314.397 116.996-10.859 3.361c-1.135-3.688-2.81-8.218-5.196-12.769-7.695-14.679-18.96-22.449-32.576-22.469h-.046c-.944 0-1.885.089-2.826.174-.4-.482-.805-.96-1.231-1.416-5.928-6.345-13.54-9.436-22.651-9.169-17.588.504-35.095 13.204-49.296 35.758-9.996 15.874-17.59 35.815-19.749 51.249-20.19 6.252-34.317 10.627-34.622 10.723-10.192 3.198-10.512 3.518-11.848 13.121-1.012 7.269-27.676 213.482-27.676 213.482l221.254 38.262v-320.76c-1.091.07-2.066.273-2.678.453zm-51.09 15.819a507276.76 507276.76 0 0 0-37.313 11.554c3.61-13.81 10.443-27.559 18.84-36.567 3.124-3.351 7.494-7.089 12.668-9.224 4.868 10.143 5.923 24.523 5.805 34.237zm-23.958-46.404c4.129-.086 7.607.82 10.577 2.774-4.75 2.466-9.345 6.012-13.655 10.634-11.171 11.983-19.727 30.589-23.139 48.532l-30.645 9.489c6.043-28.257 29.72-70.649 56.862-71.429zM205.13 247.339c1.188 18.823 50.705 22.935 53.488 67.021 2.19 34.685-18.397 58.411-48.062 60.284-35.597 2.247-55.199-18.758-55.199-18.758l7.543-32.092s19.726 14.883 35.516 13.886c10.314-.651 14-9.04 13.625-14.973-1.55-24.553-41.872-23.107-44.419-63.451-2.144-33.954 20.152-68.352 69.35-71.459 18.956-1.197 28.663 3.643 28.663 3.643l-11.251 42.086s-12.549-5.714-27.427-4.775c-21.813 1.378-22.045 15.139-21.827 18.588zm69.868-118.144c-.13-8.905-1.193-21.292-5.342-32 13.344 2.529 19.914 17.627 22.687 26.629l-17.345 5.371zM324.392 436.431l91.787-22.815s-39.519-267.191-39.77-269.024-1.856-2.846-3.18-2.957c-1.324-.11-27.163-.504-27.163-.504s-15.755-15.301-21.674-21.09z" fill="#ffffff" opacity="1" data-original="#ffffff" class=""></path></g></g></svg>
+      </div>
+  <div id="get_image_v_5_2" style="border: 1px solid green;">
+    'shopify icon .svg' | asset_url = {{ 'shopify icon .svg' | asset_url }}
+    <br>
+     'shopify icon .svg' | asset_img_url: '200x' = {{ 'shopify icon .svg' | asset_img_url: '200x' | asset_url }}
+     <br>
+      <img src="{{ 'shopify icon .svg' | asset_url }}" alt="">
+        <br>
+         <img src="{{ 'shopify icon .svg' | asset_img_url: '50x' }}" alt="">  
+         <br>
+        {{ 'shopify icon .svg' | asset_url | img_tag }}
+       
+  </div>
+    </div>
+<div id="get_image_v_5_3" style="border: 1px solid green;">
+<br>  
+<div class="svg-icon">
+{% render 'shopify-icon-snipets' %}
+</div>
+<style>
+  .svg-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .svg-icon svg {
+    width: inherit;
+    height: inherit;
+  }
+</style>
+
+    <br>
+    <br>
+    {% include 'shopify-icon-snipets' %}
+    <br>
+  </div>
+    
+
+  {% endif %}
+</div>>
 
 {% schema %}
   {
@@ -11,8 +137,7 @@
         "type": "image_picker",
         "id": "get_image_v_1",
         "label": "Get Image V1"
-      },
-      {
+      }, {
         "type": "image_picker",
         "id": "get_image_v_2",
         "label": "Image_picker without image"

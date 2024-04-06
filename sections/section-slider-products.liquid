@@ -12,14 +12,13 @@
               {% assign product = block.settings.proposal_product %}
 
               <div class="slider-product-proposal__slider-item">
-                <a href="{{ product.url }}" class="slider-item__link"> </a>
+                <a href="{{ product.url }}" class="slider-item__link"></a>
                 <div class="slider-item__image">
                   <img
-                    src="{{ product.featured_image | image_url: width: 350 }}"
+                    src="{{ product.featured_image | img_url: '700x' }}"
                     alt="{{ product.featured_image.alt | default: product.title }}"
                     class="slider-item__picture"
-                    loading="lazy"
-                  >
+                    loading="lazy">
                 </div>
                 <h4 class="slider-item__title">{{ product.title }}</h4>
                 {% if product.content != blank %}
@@ -48,76 +47,74 @@
 <script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    $('#shopify-section-{{ section.id }} .slider-product-proposal__slider-list').slick({
+  document.addEventListener('DOMContentLoaded', function() {
+    $('#shopify-section-   {{ section.id }} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
       slidesToScroll: 2,
-       speed: 1000,
-       prevArrow: $('#shopify-section-{{ section.id }} .control-prev'),
-       nextArrow: $('#shopify-section-{{ section.id }} .control-next'),
-       responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: {{ section.settings.slider_items_tab }},
-        slidesToScroll: {{ section.settings.slider_items_tab }}
-      }
-    },
-    {
-      breakpoint: 576,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+      speed: 1000,
+      prevArrow: $('#shopify-section-   {{ section.id }} .control-prev'),
+      nextArrow: $('#shopify-section-   {{ section.id }} .control-next'),
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: {{ section.settings.slider_items_tab }},
+            slidesToScroll: {{ section.settings.slider_items_tab }}
+          }
+        }, {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     });
   });
 </script>
 
 {% schema %}
-{
-  "name": "Slider Products",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "range",
-      "id": "slider_items",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "label": "items per page",
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "slider_items_tab",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "label": "items per page",
-      "default": 2
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Proposal product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "proposal_product",
-          "label": "Our proposal Product"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Slider Products"
-    }
-  ]
-}
+  {
+    "name": "Slider Products",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "range",
+        "id": "slider_items",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "items per page",
+        "default": 4
+      }, {
+        "type": "range",
+        "id": "slider_items_tab",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "items per page",
+        "default": 2
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Proposal product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "proposal_product",
+            "label": "Our proposal Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slider Products"
+      }
+    ]
+  }
 {% endschema %}
