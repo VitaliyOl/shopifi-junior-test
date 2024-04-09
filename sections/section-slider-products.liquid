@@ -30,7 +30,7 @@
                   {{ product.price | money_with_currency }}
                 </div>
                 <div class="slider-item__buttons">
-                  <button class="button button--prymary">ADD WITH AJAX</button>
+                  <button class="button button--prymary" data-ajax-add="{{ product.selected_or_first_available_variant.id }}">ADD WITH AJAX</button>
                   <button class="button button--prymary">ADD WITH DAWN</button>
                 </div>
               </div>
@@ -66,7 +66,8 @@
             slidesToShow: {{ section.settings.slider_items_tab }},
             slidesToScroll: {{ section.settings.slider_items_tab }}
           }
-        }, {
+        }, 
+        {
           breakpoint: 576,
           settings: {
             slidesToShow: 1,
@@ -75,6 +76,31 @@
         }
       ]
     });
+    
+    $('#shopify-section-{{ section.id }}').on('click', '[data-ajax-add]', function (e) {
+      const itemId = parseInt($(this).attr('data-ajax-add'))
+        $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          dataType: 'json',
+          data: {
+              quantity: 1,
+              id: itemId
+          },
+          success: function(data) {
+             console.log(data, "data")
+               $.ajax({
+                  type: 'GET',
+                  dataType: 'jsonp',
+                  url: '/cart.json',
+                  success: function(cart) {
+                    console.log(cart, "cart")
+                  }
+              }) 
+          }
+      })
+    });
+    
   });
 </script>
 
