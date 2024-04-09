@@ -52,7 +52,7 @@
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    $('#shopify-section-             {{ section.id }} .slider-product-proposal__slider-list').slick({
+    $('#shopify-section-{{ section.id }} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
       slidesToScroll: 2,
