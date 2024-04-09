@@ -29,6 +29,10 @@
                 <div class="slider-item__price">
                   {{ product.price | money_with_currency }}
                 </div>
+                <div class="slider-item__buttons">
+                  <button class="button button--prymary">ADD WITH AJAX</button>
+                  <button class="button button--prymary">ADD WITH DAWN</button>
+                </div>
               </div>
             {% endif %}
           {% endfor %}
@@ -48,7 +52,7 @@
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    $('#shopify-section-{{ section.id }} .slider-product-proposal__slider-list').slick({
+    $('#shopify-section-             {{ section.id }} .slider-product-proposal__slider-list').slick({
       infinite: true,
       slidesToShow: {{ section.settings.slider_items }},
       slidesToScroll: 2,
@@ -62,8 +66,7 @@
             slidesToShow: {{ section.settings.slider_items_tab }},
             slidesToScroll: {{ section.settings.slider_items_tab }}
           }
-        }, 
-        {
+        }, {
           breakpoint: 576,
           settings: {
             slidesToShow: 1,
