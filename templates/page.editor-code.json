@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "newsletter_Aakazf": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_atLr4P": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails for the Editor code Templates",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_qDaH6h": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_KWmmCc": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "heading_atLr4P",
+        "paragraph_qDaH6h",
+        "email_form_KWmmCc"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter_Aakazf"
+  ]
+}
