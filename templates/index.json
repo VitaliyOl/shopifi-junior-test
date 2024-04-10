@@ -39,6 +39,11 @@
         "show_text_below": false
       }
     },
+    "schema_settings_blocks_MVpmXW": {
+      "type": "schema_settings_blocks",
+      "settings": {
+      }
+    },
     "section_slider_products_4MzfmH": {
       "type": "section-slider-products",
       "blocks": {
@@ -147,6 +152,7 @@
   },
   "order": [
     "image_banner",
+    "schema_settings_blocks_MVpmXW",
     "section_slider_products_4MzfmH",
     "section_slider_products_ETyV8X",
     "image_get_links_9eaDtj"
