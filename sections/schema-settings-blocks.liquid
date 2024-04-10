@@ -1,0 +1,79 @@
+{% if settings.enable_marketing == true %}
+  <div style="border: 1px solid purple;"></div>
+{% endif %}
+{% if settings.facebook_id != blank %}
+<script>
+  console.log('facebook_id', '{{ settings.facebook_id }}')  
+</script>
+{% endif %}
+{% if settings.another_script != blank %}
+  <script>
+  console.log('another_script')  
+</script>
+{{ settings.another_script }}
+{% endif %}
+
+<div>
+  settings.cart_type = {{ settings.cart_type }}
+</div>
+
+<div class="schema-settings-blocks__section"></div>
+
+{% schema %}
+{
+  "name": "Schema section blocks",
+  "tag": "section",
+  "class": "section schema-settings-blocks",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow"
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Schema section blocks add",
+      "settings": {
+        "title": "Slideshow"
+      },
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Slideshow"
+    },
+    "fr": {
+      "title": "Diaporama"
+    }
+  },
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["footer"]
+  }
+}
+{% endschema %}
+

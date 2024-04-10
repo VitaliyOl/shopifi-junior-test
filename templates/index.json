@@ -39,9 +39,26 @@
         "show_text_below": false
       }
     },
-    "schema_settings_blocks_MVpmXW": {
-      "type": "schema_settings_blocks",
+    "schema_settings_blocks_khWADp": {
+      "type": "schema-settings-blocks",
+      "blocks": {
+        "slide_xYbGw6": {
+          "type": "slide",
+          "settings": {
+          }
+        },
+        "slide_wjVVQb": {
+          "type": "slide",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "slide_xYbGw6",
+        "slide_wjVVQb"
+      ],
       "settings": {
+        "title": "Slideshow"
       }
     },
     "section_slider_products_4MzfmH": {
@@ -152,7 +169,7 @@
   },
   "order": [
     "image_banner",
-    "schema_settings_blocks_MVpmXW",
+    "schema_settings_blocks_khWADp",
     "section_slider_products_4MzfmH",
     "section_slider_products_ETyV8X",
     "image_get_links_9eaDtj"
