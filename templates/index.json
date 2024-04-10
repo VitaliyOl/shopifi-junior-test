@@ -39,26 +39,43 @@
         "show_text_below": false
       }
     },
-    "schema_settings_blocks_khWADp": {
+    "schema_settings_blocks_WrCWPp": {
       "type": "schema-settings-blocks",
       "blocks": {
-        "slide_xYbGw6": {
-          "type": "slide",
+        "benefit_fweadB": {
+          "type": "benefit",
           "settings": {
+            "title": "Free shiping"
           }
         },
-        "slide_wjVVQb": {
-          "type": "slide",
+        "benefit_9gwA4f": {
+          "type": "benefit",
           "settings": {
+            "title": "color watches"
+          }
+        },
+        "offer_VRyNEt": {
+          "type": "offer",
+          "settings": {
+            "image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg"
+          }
+        },
+        "offer_m4WCaR": {
+          "type": "offer",
+          "settings": {
+            "image": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
           }
         }
       },
       "block_order": [
-        "slide_xYbGw6",
-        "slide_wjVVQb"
+        "benefit_fweadB",
+        "benefit_9gwA4f",
+        "offer_VRyNEt",
+        "offer_m4WCaR"
       ],
       "settings": {
-        "title": "Slideshow"
+        "title": "Benefits",
+        "description": "<p>Our benfit description</p>"
       }
     },
     "section_slider_products_4MzfmH": {
@@ -169,7 +186,7 @@
   },
   "order": [
     "image_banner",
-    "schema_settings_blocks_khWADp",
+    "schema_settings_blocks_WrCWPp",
     "section_slider_products_4MzfmH",
     "section_slider_products_ETyV8X",
     "image_get_links_9eaDtj"

@@ -1,3 +1,4 @@
+{% comment %} Global settings {% endcomment %}
 {% if settings.enable_marketing == true %}
   <div style="border: 1px solid purple;"></div>
 {% endif %}
@@ -12,12 +13,59 @@
 </script>
 {{ settings.another_script }}
 {% endif %}
-
 <div>
   settings.cart_type = {{ settings.cart_type }}
 </div>
+{% comment %} Local section settings code {% endcomment %}
 
-<div class="schema-settings-blocks__section"></div>
+<div class="schema-settings-blocks__section">
+  {% if section.settings.title != blank %}
+      <h3>{{ section.settings.title }}</h3>
+  {% endif %}
+   {% if section.settings.description != blank %}
+      <h3>{{ section.settings.description }}</h3>
+  {% endif %}
+
+<div class="schema-settings-blocks__block">
+  {% if section.blocks.size > 0 %}
+   <ul>
+     {% for block in section.blocks %} 
+      {% if block.settings.title != blank and block.type == 'benefit' %}
+        <li>
+         {{ block.settings.title }}
+         <ul>
+           {% comment %} Repiter for blocks {% endcomment %}
+          {% for i in (1..5) %}
+              {% assign count_name = 'benefit_' | append: i %}
+              {% assign benefit_title = block.settings[count_name] %}
+               {% comment %} Repiter for fields in blocks {% endcomment %}
+              {% if benefit_title != blank %}
+                <li>                
+                {{ benefit_title }} = {{ i }}
+              </li>   
+              {% endif %}
+                        
+          {% endfor %}
+         </ul>
+        </li>         
+      {% endif %}    
+    {% endfor %}
+   </ul>
+   <div>
+    {% for block in section.blocks %} 
+      {% if block.settings.image != blank and block.type == 'offer' %}
+        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.image.alt | default: section.settings.title  }}">      
+      {% endif %}    
+    {% endfor %}
+   </div>
+  {% endif %}
+</div> 
+
+ 
+
+</div>
+
+{% comment %} Local section settings schema {% endcomment %}
 
 {% schema %}
 {
@@ -29,20 +77,67 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Slideshow"
+      "label": "section title",
+      "default": "Benefit title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "section description",
+      "default": "<p>Our benfit description<\/p>"
     }
   ],
   "max_blocks": 5,
   "blocks": [
      {
-       "name": "Slide",
-       "type": "slide",
+       "name": "Benefit",
+       "type": "benefit",
        "settings": [
-         {
-           "type": "image_picker",
-           "id": "image",
-           "label": "Image"
-         }
+          {
+      "type": "text",
+      "id": "title",
+      "label": "Benefit title"
+          },
+          {
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "benefit text 1"
+          },
+          {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "benefit text 2"
+          },
+          {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Benefit 3"
+          },
+          {
+      "type": "text",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "benefit text 4"
+          },
+          {
+      "type": "text",
+      "id": "benefit_5",
+      "label": "Benefit 5",
+      "default": "benefit text 5"
+          }
+       ]
+     },
+       {
+       "name": "Offer",
+       "type": "offer",
+       "settings": [
+          {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Offer image"
+          }
        ]
      }
   ],
@@ -50,30 +145,18 @@
     {
       "name": "Schema section blocks add",
       "settings": {
-        "title": "Slideshow"
+        "title": "Benefits"
       },
       "blocks": [
         {
-          "type": "slide"
+          "type": "benefit"
         },
         {
-          "type": "slide"
+          "type": "benefit"
         }
       ]
     }
-  ],
-  "locales": {
-    "en": {
-      "title": "Slideshow"
-    },
-    "fr": {
-      "title": "Diaporama"
-    }
-  },
-  "enabled_on": {
-    "templates": ["*"],
-    "groups": ["footer"]
-  }
+  ]  
 }
 {% endschema %}
 
