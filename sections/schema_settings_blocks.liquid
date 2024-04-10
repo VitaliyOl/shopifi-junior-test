@@ -8,11 +8,14 @@
 {% endif %}
 {% if settings.another_script != blank %}
   <script>
-  console.log('another_script', '{{ settings.another_script }}')  
+  console.log('another_script')  
 </script>
+{{ settings.another_script }}
 {% endif %}
 
-
+<div>
+  settings.cart_type = {{ settings.cart_type }}
+</div>
 {% schema %}
 {
   "name": "Schema settings blocks",
