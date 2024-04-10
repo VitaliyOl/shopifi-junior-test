@@ -45,13 +45,23 @@
         "benefit_fweadB": {
           "type": "benefit",
           "settings": {
-            "title": "Free shiping"
+            "title": "Free shiping",
+            "benefit_1": "benefit text 1",
+            "benefit_2": "benefit text 2",
+            "benefit_3": "",
+            "benefit_4": "benefit text 4",
+            "benefit_5": "benefit text 5"
           }
         },
         "benefit_9gwA4f": {
           "type": "benefit",
           "settings": {
-            "title": "color watches"
+            "title": "color watches",
+            "benefit_1": "benefit text 1",
+            "benefit_2": "benefit text 2",
+            "benefit_3": "",
+            "benefit_4": "benefit text 4",
+            "benefit_5": "benefit text 5"
           }
         },
         "offer_VRyNEt": {
@@ -65,13 +75,25 @@
           "settings": {
             "image": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
           }
+        },
+        "benefit_YArq9K": {
+          "type": "benefit",
+          "settings": {
+            "title": "New benefit title",
+            "benefit_1": "benefit text 1",
+            "benefit_2": "benefit text 2",
+            "benefit_3": "",
+            "benefit_4": "benefit text 4",
+            "benefit_5": "benefit text 5"
+          }
         }
       },
       "block_order": [
         "benefit_fweadB",
         "benefit_9gwA4f",
         "offer_VRyNEt",
-        "offer_m4WCaR"
+        "offer_m4WCaR",
+        "benefit_YArq9K"
       ],
       "settings": {
         "title": "Benefits",

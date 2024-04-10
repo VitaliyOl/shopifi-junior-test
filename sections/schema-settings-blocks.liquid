@@ -61,7 +61,31 @@
   {% endif %}
 </div> 
 
- 
+  <div class="schema-settings-blocks__block">
+     {% if section.blocks.size > 0 %}
+      <ul>
+        {% for block in section.blocks %}
+          {% case block.type %}
+          {% when 'benefit' %}
+                    <li>
+                        {{ block.settings.title }}
+                    </li>                  
+          {% endcase %}
+        {% endfor %}
+         {% for block in section.blocks %}
+          {% case block.type %}          
+           {% when 'offer' %}
+            {% if block.settings.image != blank %}
+                  <li>
+                      <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.image.alt | default: section.settings.title  }}">      
+                  </li>        
+            {% endif %}  
+            
+          {% endcase %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
 
 </div>
 
