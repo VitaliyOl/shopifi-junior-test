@@ -15,12 +15,24 @@
         <br>
         section.settings.get_image_v_1 | img_url: '33x' | img_tag == {{ section.settings.get_image_v_1 | img_url: '33x' | img_tag }}
         <div style="border: 1px solid green;">
-          <img src="{{ section.settings.get_image_v_1 | img_url: 'icon' }}" alt="{{ section.settings.get_image_v_1.alt }}">
+          <img src="{{ section.settings.get_image_v_1 | img_url: 'icon' }}" 
+          alt="{{ section.settings.get_image_v_1.alt }}"
+          width="auto"
+          height="auto"
+          >
 
           <br>
-          <img src="{{ section.settings.get_image_v_1 | img_url: '500x' }}" alt="{{ section.settings.get_image_v_1.alt }}">
+          <img src="{{ section.settings.get_image_v_1 | img_url: '500x' }}" 
+          alt="{{ section.settings.get_image_v_1.alt }}"
+          width="auto"
+          height="auto"
+          >
           <br>
-          <img src="{{ section.settings.get_image_v_1 | img_url: 'large' }}" alt="{{ section.settings.get_image_v_1.alt }}">
+          <img src="{{ section.settings.get_image_v_1 | img_url: 'large' }}" 
+          alt="{{ section.settings.get_image_v_1.alt }}"
+          width="auto"
+          height="auto"
+          >
           <br>
           {{ section.settings.get_image_v_1 | img_url: '500x' | img_tag: section.settings.get_image_v_1.alt }}
           <br>
@@ -44,7 +56,11 @@
       <br>
       section.settings.get_image_v_2 | img_url: '33x' | img_tag == {{ section.settings.get_image_v_2 | img_url: '33x' | img_tag }}
       <br>
-      <img src="{{ section.settings.get_image_v_2 | img_url: 'medium' }}" alt="{{ section.settings.get_image_v_2.alt }}">
+      <img src="{{ section.settings.get_image_v_2 | img_url: 'medium' }}" 
+      alt="{{ section.settings.get_image_v_2.alt }}"
+      width="auto"
+      height="auto"
+      >
       <br>
       {{ section.settings.get_image_v_2 | img_url: '150x' | img_tag: section.settings.get_image_v_2.alt }}
     </div>
@@ -60,7 +76,10 @@
         <br>
         'image_leopard-assets.jpg' | asset_img_url: '200x' = {{ 'image_leopard-assets.jpg' | asset_img_url: '200x' }}
         <br>
-        <img src="{{ 'image_leopard-assets.jpg' | asset_img_url: 'medium' }}">
+        <img src="{{ 'image_leopard-assets.jpg' | asset_img_url: 'medium' }}"
+        width="auto"
+        height="auto"
+        >
         <br>
         {{ 'image_leopard-assets.jpg' | asset_img_url: '150x' | img_tag }}
 
@@ -73,7 +92,11 @@
       <div style="border: 1px solid tomato;">
         'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' = {{ 'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' }}
         <br>
-        <img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456" alt="image_leopard-files">
+        <img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456" 
+        alt="image_leopard-files"
+        width="auto"
+        height="auto"
+        >
         <br>
         {{ 'https://cdn.shopify.com/s/files/1/0864/6249/7052/files/image_leopard-files.jpg?v=1712443456' | img_tag }}
         <br>
@@ -94,9 +117,17 @@
     <br>
      'shopify icon .svg' | asset_img_url: '200x' = {{ 'shopify icon .svg' | asset_img_url: '200x' | asset_url }}
      <br>
-      <img src="{{ 'shopify icon .svg' | asset_url }}" alt="">
+      <img src="{{ 'shopify icon .svg' | asset_url }}" 
+      alt=""
+      width="auto"
+      height="auto"
+      >
         <br>
-         <img src="{{ 'shopify icon .svg' | asset_img_url: '50x' }}" alt="">  
+         <img src="{{ 'shopify icon .svg' | asset_img_url: '50x' }}" 
+         alt=""
+         width="auto"
+         height="auto"
+         >  
          <br>
         {{ 'shopify icon .svg' | asset_url | img_tag }}
        
