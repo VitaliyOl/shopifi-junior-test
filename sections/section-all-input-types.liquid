@@ -1,0 +1,93 @@
+<div class="page-width section-all-input-types__block">
+  <h2>Text Field</h2>
+  <div>
+  {% raw %}
+    {{ section.settings.input_text }} ==
+  {% endraw %}  
+  {{ section.settings.input_text }}
+    </div>
+    <div>
+    {% raw %}
+      {{ section.settings.input_textarea  }} ==
+    {% endraw %}
+    {{ section.settings.input_textarea }}
+  </div>
+  <div>
+    {% raw %}
+      {{ section.settings.input_richtext  }} ==
+    {% endraw %}
+    {{ section.settings.input_richtext }}
+  </div>
+  <div>
+    {% raw %}
+      {{ section.settings.input_inline_richtext  }} ==
+    {% endraw %}
+    {{ section.settings.input_inline_richtext }}
+  </div>
+</div>
+  
+
+
+{% schema %}
+{
+  "name": "Section all input types",
+  "tag": "section",
+  "class": "section section-all-input-types",
+  "settings": [ 
+      {
+        "type": "header",
+        "content": "All text fields"
+      },
+      {
+        "type": "paragraph",
+        "content": "In this block we'll use the text fields. [Learn more](https://help.shopify.com/manual/customers/manage-customers)"
+      },
+      {
+        "type": "text",
+        "id": "input_text",
+        "label": "Input text",
+        "default": "Our default text field"
+      },
+      {
+        "type": "textarea",
+        "id": "input_textarea",
+        "label": "Input textarea",
+        "default": "Our default textarea field. We can use more letters and words than in the default text field"
+      },
+      {
+        "type": "richtext",
+        "id": "input_richtext",
+        "label": "Input richtext",
+        "info": "In this field wa can`t use default attribute. You can read more [there](https://shopify.dev/docs/themes/architecture/settings/input-settings#richtext)"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "input_inline_richtext",
+        "label": "Input inline_richtext",
+        "info": "You can read more [there](https://shopify.dev/docs/themes/architecture/settings/input-settings#inline_richtext)",
+        "default": "my <i>inline</i> <b>text</b>"
+      },
+      {
+        "type": "paragraph",
+        "content": "============================="
+      },
+      {
+        "type": "header",
+        "content": "All number fields"
+      },
+      {
+        "type": "paragraph",
+        "content": "In this block we'll use the text fields."
+      } ,
+      {
+        "type": "paragraph",
+        "content": "============================="
+      }   
+  ],
+  "presets": [
+    {
+      "name": "Section all input types"
+    }
+  ]
+}
+{% endschema %}

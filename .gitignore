@@ -119,3 +119,9 @@ dist
 config.yml
 
 .DS_Store
+
+# Ignore settings_data.json files
+settings_data.json
+
+# Ignore the config/settings_data.json file
+config/settings_data.json
