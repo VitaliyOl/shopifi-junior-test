@@ -204,6 +204,13 @@
       "settings": {
         "get_image_v_1": "shopify://shop_images/abs-workout-tire.jpg"
       }
+    },
+    "section_collection_tabs_3YBkqQ": {
+      "type": "section-collection-tabs",
+      "settings": {
+        "title": "Favorite products",
+        "description": "<p>Chose your dream</p>"
+      }
     }
   },
   "order": [
@@ -211,6 +218,7 @@
     "schema_settings_blocks_WrCWPp",
     "section_slider_products_4MzfmH",
     "section_slider_products_ETyV8X",
-    "image_get_links_9eaDtj"
+    "image_get_links_9eaDtj",
+    "section_collection_tabs_3YBkqQ"
   ]
 }

@@ -1,0 +1,43 @@
+
+
+{% schema %}
+{
+  "name": "Collection tabs",
+  "tag": "section",
+  "class": "section section-collection-tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "section title",
+      "default": "Favorite products"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "section description",
+      "default": "<p>Chose your dream</p>"
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+     {
+       "name": "Collection tab",
+       "type": "collection_tabs",
+       "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+       ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Collection tabs"      
+    }
+  ]  
+}
+{% endschema %}
+
