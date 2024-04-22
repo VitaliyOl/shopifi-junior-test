@@ -55,7 +55,7 @@
     {% for block in section.blocks %} 
       {% if block.settings.image != blank and block.type == 'offer' %}
         <img src="{{ block.settings.image | img_url: 'medium' }}" 
-        alt="{{ block.settings.image.alt | default: section.settings.title  }}"
+        alt="{{ block.settings.image.alt | default: section.settings.title }}"
         width="auto"
         height="auto"
         >      
@@ -82,7 +82,7 @@
             {% if block.settings.image != blank %}
                   <li>
                       <img src="{{ block.settings.image | img_url: 'medium' }}"
-                       alt="{{ block.settings.image.alt | default: section.settings.title  }}"
+                       alt="{{ block.settings.image.alt | default: section.settings.title }}"
                        width="auto"
                        height="auto"
                        >      
@@ -116,7 +116,7 @@
       "type": "richtext",
       "id": "description",
       "label": "section description",
-      "default": "<p>Our benfit description<\/p>"
+      "default": "<p>Our benfit description</p>"
     }
   ],
   "max_blocks": 5,

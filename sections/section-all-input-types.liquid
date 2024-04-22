@@ -101,20 +101,79 @@
   </div>
   <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quam in consequatur soluta nobis odio culpa impedit. Maxime, quia facere iure quibusdam ad quod doloremque cum voluptatem, adipisci, amet rem.</span><span>Dignissimos commodi delectus sit repellat, nihil fuga quod reprehenderit, ex optio esse perspiciatis sunt facilis vel dicta laboriosam omnis recusandae similique eligendi totam adipisci ducimus consequuntur debitis voluptatibus? Tenetur, eveniet!</span></p>
   <style>
-    #shopify-section-{{section.id}} .section-all-input-types__block--color {
+    #shopify-section-{{ section.id }} .section-all-input-types__block--color {
       color: {{ section.settings.input_color }};
     }
-    #shopify-section-{{section.id}} .section-all-input-types__block--color div {
+    #shopify-section-{{ section.id }} .section-all-input-types__block--color div {
       background-color: {{ section.settings.input_bg_color }};
       color: inherit;
     }
-    #shopify-section-{{section.id}} .section-all-input-types__block--color p {
+    #shopify-section-{{ section.id }} .section-all-input-types__block--color p {
       background: {{ section.settings.input_background }};
       color: inherit;
     }
   </style>
 </div>
+<hr>
+<div class="section-all-types__homework">
+  <h2>HOMEWORK</h2>
+  <div class="section-all-types__block">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'home_1' and block.settings.menu != blank %}
+          <div class="section-all-types__home-1 section-all-types-{{ block.id }}" style="background-color: {{ block.settings.background_color | default: '#FBCEB1' }}">
+            {% assign input_linklist = block.settings.menu %}
+            {% if input_linklist.links.size > 0 %}
+              <ul>
+                {% for link in input_linklist.links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    {% if link.links.size > 0 %}
+                      <ul>
+                        {% for child_link in link.links %}
+                          <li>
+                            <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                            {% if child_link.links.size > 0 %}
+                              <ul>
+                                {% for child_child_link in child_link.links %}
+                                  <li>
+                                    <a href="{{ child_child_link.url }}">{{ child_child_link.title }}</a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% comment %} recomended use this style for block.id {% endcomment %}
+          <style>
+            .section-all-types-{{ block.id }} * {
+              color: {{ block.settings.text_color | default: '#000' }};
+            }
+          </style>
+          </div> 
 
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if section.blocks.size > 0 %}
+  <style>
+    {% for block in section.blocks %}
+        {% if block.type == 'home_1' and block.settings.menu != blank %}
+          .section-all-types-{{ block.id }} > ul > li > a{
+            color: {{ block.settings.text_color_parent | default: '#000' }};
+          }
+        {% endif %}
+    {% endfor %}
+  </style>
+  {% endif %}
+</div>
 
 {% schema %}
 {
@@ -309,6 +368,37 @@
         "label": "BACKGROUND COLOR 2",
         "default": "linear-gradient(#ffffff, #000000)"
       }  
+  ],
+   "blocks": [
+    {
+      "name": "Home block 1",
+      "type": "home_1",
+      "settings": [            
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select your block menu"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "TEXT COLOR",
+          "default": "#00FFFF"
+        },
+        {
+          "type": "color",
+          "id": "text_color_parent",
+          "label": "Parent item COLOR",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background_color COLOR",
+          "default": "#9F2B68"
+        }
+      ]
+    }
   ],
   "presets": [
     {
