@@ -24,8 +24,96 @@
     {% endraw %}
     {{ section.settings.input_inline_richtext }}
   </div>
+    <div>
+    {% raw %}
+      {{ section.settings.input_html  }} ==
+    {% endraw %}
+    {{ section.settings.input_html }}
+  </div>
+   <div>
+    {% raw %}
+      {{ section.settings.input_liquid  }} ==
+    {% endraw %}
+    {{ section.settings.input_liquid }}
+  </div>
 </div>
-  
+<div class="page-width section-all-input-types__block">
+  <h2>NUMBER Fields</h2>
+  <div>
+    {% raw %}
+      {{ section.settings.input_number  }} ==
+    {% endraw %}
+    {{ section.settings.input_number }}
+  </div>
+    <div style="height: {{ section.settings.input_range }}px; background-color: pink;">
+    {% raw %}
+      {{ section.settings.input_range  }} ==
+    {% endraw %}
+    {{ section.settings.input_range }}
+  </div>
+</div>
+<div class="page-width section-all-input-types__block">
+   <h2>READY Fields</h2>
+  <div style="background-color: {{ section.settings.input_radio }}; color: {{ section.settings.input_select }}">
+   TEXT{% if section.settings.input_checkbox == true %}  + EXTRA TEXT  {% endif %}
+  </div>  
+</div>
+<div class="page-width section-all-input-types__block">
+  <h2>LINKS Fields</h2>
+  <a href="{{ section.settings.input_link }}">{{ section.settings.input_link }}</a>
+  {% assign input_linklist = section.settings.input_menu %}
+  {% if input_linklist.links.size > 0 %}
+    <ul>
+      {% for link in input_linklist.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul>
+              {% for child_link in link.links %}
+                <li>
+                  <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  {% if child_link.links.size > 0 %}
+                    <ul>
+                      {% for child_child_link in child_link.links %}
+                        <li>
+                          <a href="{{ child_child_link.url }}">{{ child_child_link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+  <div class="page-width section-all-input-types__block section-all-input-types__block--color">
+  <h2>Design Fields</h2>
+  <div>
+   Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptatum consequuntur consequatur cumque odio quasi animi, sint dolorem quam maiores dolor minima qui, delectus odit pariatur nulla magni molestias dicta!
+   Unde ipsa eum molestias assumenda modi eius cum quaerat ea amet soluta sapiente veritatis similique optio nulla blanditiis, placeat ab at debitis, dignissimos obcaecati veniam? Enim modi expedita rem cumque?
+   Pariatur explicabo dolores, deserunt mollitia aut eligendi nostrum aliquam deleniti, dicta labore ipsa laboriosam error eum optio rerum reprehenderit ex a recusandae unde accusamus qui fugit amet quidem nam. Optio?
+   Quos deleniti deserunt perspiciatis doloribus odio, explicabo quibusdam impedit repudiandae dolores officiis magni quasi accusamus necessitatibus voluptatem provident ab? Fuga quae labore quod velit. Voluptatum nobis praesentium quo exercitationem doloribus.
+   Harum tenetur dolorum commodi, laudantium, omnis expedita corporis odit earum voluptates obcaecati itaque impedit temporibus blanditiis ea! Sequi, sed cupiditate cumque sit quidem recusandae unde quam laudantium non, id ex.
+  </div>
+  <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quam in consequatur soluta nobis odio culpa impedit. Maxime, quia facere iure quibusdam ad quod doloremque cum voluptatem, adipisci, amet rem.</span><span>Dignissimos commodi delectus sit repellat, nihil fuga quod reprehenderit, ex optio esse perspiciatis sunt facilis vel dicta laboriosam omnis recusandae similique eligendi totam adipisci ducimus consequuntur debitis voluptatibus? Tenetur, eveniet!</span></p>
+  <style>
+    #shopify-section-{{section.id}} .section-all-input-types__block--color {
+      color: {{ section.settings.input_color }};
+    }
+    #shopify-section-{{section.id}} .section-all-input-types__block--color div {
+      background-color: {{ section.settings.input_bg_color }};
+      color: inherit;
+    }
+    #shopify-section-{{section.id}} .section-all-input-types__block--color p {
+      background: {{ section.settings.input_background }};
+      color: inherit;
+    }
+  </style>
+</div>
 
 
 {% schema %}
@@ -36,7 +124,7 @@
   "settings": [ 
       {
         "type": "header",
-        "content": "All text fields"
+        "content": "text fields"
       },
       {
         "type": "paragraph",
@@ -68,12 +156,24 @@
         "default": "my <i>inline</i> <b>text</b>"
       },
       {
+        "type": "html",
+        "id": "input_html",
+        "label": "Input html",
+        "default": "<b style='color: red;'>Our html input</b>"
+      },
+       {
+      "type": "liquid",
+      "id": "input_liquid",
+      "label": "Input liquid",
+      "default": "{% if 'true' == 'true' %} True {% else %} False {% endif %}"
+      },
+      {
         "type": "paragraph",
         "content": "============================="
       },
       {
         "type": "header",
-        "content": "All number fields"
+        "content": "number fields"
       },
       {
         "type": "paragraph",
@@ -82,7 +182,133 @@
       {
         "type": "paragraph",
         "content": "============================="
-      }   
+      },
+      {
+        "type": "number",
+        "id": "input_number",
+        "label": "Input number",
+        "default": 131935
+      },
+      {
+        "type": "range",
+        "id": "input_range",
+        "min": 50,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "label": "Block height",
+        "default": 50
+      },
+      {
+        "type": "paragraph",
+        "content": "==================="
+      },
+      {
+        "type": "header",
+        "content": "READY fields"
+      },
+      {
+        "type": "paragraph",
+        "content": "In this block we`ll use the READY fields"
+      },
+      {
+        "type": "radio",
+        "id": "input_radio",
+        "label": "Background-color",
+        "options": [
+                      {
+                        "value": "#008000",
+                        "label": "Green"
+                      },
+                      {
+                        "value": "pink",
+                        "label": "Pink"
+                      },
+                      {
+                        "value": "rgba(0,0,0,0.5)",
+                        "label": "Half-transparent"
+                      }
+                    ],
+         "default": "#008000"
+      },
+      {
+        "type": "select",
+        "id": "input_select",
+        "label": "Text-color",
+        "options": [
+                      {
+                        "value": "red",
+                        "label": "Red"
+                      },
+                      {
+                        "value": "pink",
+                        "label": "Pink"
+                      },
+                      {
+                        "value": "#fff",
+                        "label": "White"
+                      }
+                    ],
+         "default": "#fff"
+      },
+      {
+        "type": "checkbox",
+        "id": "input_checkbox",
+        "label": "Show extra text",     
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "==================="
+      },
+      {
+        "type": "header",
+        "content": "LINKS fields"
+      },
+      {
+        "type": "paragraph",
+        "content": "In this block we`ll use the LINKS fields"
+      },
+      {
+        "type": "url",
+        "id": "input_link",
+        "label": "Input link"
+      },
+      {
+        "type": "link_list",
+        "id": "input_menu",
+        "label": "Select your menu"
+      },
+      {
+        "type": "paragraph",
+        "content": "==================="
+      },
+      {
+        "type": "header",
+        "content": "DESIGN fields"
+      },
+      {
+        "type": "paragraph",
+        "content": "In this block we`ll use the DESIGN fields"
+      },
+      {
+        "type": "color",
+        "id": "input_color",
+        "label": "TEXT COLOR",
+        "default": "#EADDCA"
+      },
+      {
+        "type": "color",
+        "id": "input_bg_color",
+        "label": "BACKGROUND COLOR 1",
+        "default": "#FFC0CB"
+      },
+      {
+        "type": "color_background",
+        "id": "input_background",
+        "label": "BACKGROUND COLOR 2",
+        "default": "linear-gradient(#ffffff, #000000)"
+      }  
   ],
   "presets": [
     {
