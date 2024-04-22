@@ -25,8 +25,7 @@
         },
         "email_form_KWmmCc": {
           "type": "email_form",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
