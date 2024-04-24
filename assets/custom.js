@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // $(document).ready(function () {
+  //   $(".list__link").on("click", function (e) {
+  //     e.preventDefault();
+  //     let $clickedLink = $(this);
+  //     let $parentItem = $clickedLink.parent();
+  //     let index = $parentItem.index();
+
+  //     let $tabHeadList = $parentItem.parent().children();
+  //     let $tabBodyList = $parentItem
+  //       .closest(".section-collection-tabs__tabs")
+  //       .find(".section-collection-tabs__tab-body .list__item");
+
+  //     $tabHeadList.removeClass("active").eq(index).addClass("active");
+  //     $tabBodyList.removeClass("active").eq(index).addClass("active");
+  //   });
+  // });
+
   $(document).ready(function () {
     let toggleTubs = (e) => {
       e.preventDefault();

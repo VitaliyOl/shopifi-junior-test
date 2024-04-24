@@ -42,18 +42,25 @@
     "section_collection_tabs_4XCw8V": {
       "type": "section-collection-tabs",
       "blocks": {
+        "collection_tabs_UyWc8b": {
+          "type": "collection_tabs",
+          "settings": {
+            "collection": "",
+            "alternative_title": ""
+          }
+        },
         "collection_tabs_GL4QYw": {
           "type": "collection_tabs",
           "settings": {
             "collection": "frontpage",
-            "alternative_title": "First product"
+            "alternative_title": "First"
           }
         },
         "collection_tabs_Aah7ix": {
           "type": "collection_tabs",
           "settings": {
-            "collection": "skechers",
-            "alternative_title": ""
+            "collection": "empty-collection",
+            "alternative_title": "empty title"
           }
         },
         "collection_tabs_gne3YJ": {
@@ -72,6 +79,7 @@
         }
       },
       "block_order": [
+        "collection_tabs_UyWc8b",
         "collection_tabs_GL4QYw",
         "collection_tabs_Aah7ix",
         "collection_tabs_gne3YJ",
