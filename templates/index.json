@@ -39,6 +39,51 @@
         "show_text_below": false
       }
     },
+    "section_collection_tabs_4XCw8V": {
+      "type": "section-collection-tabs",
+      "blocks": {
+        "collection_tabs_GL4QYw": {
+          "type": "collection_tabs",
+          "settings": {
+            "collection": "frontpage",
+            "alternative_title": "First product"
+          }
+        },
+        "collection_tabs_Aah7ix": {
+          "type": "collection_tabs",
+          "settings": {
+            "collection": "skechers",
+            "alternative_title": ""
+          }
+        },
+        "collection_tabs_gne3YJ": {
+          "type": "collection_tabs",
+          "settings": {
+            "collection": "sale",
+            "alternative_title": "Best seller"
+          }
+        },
+        "collection_tabs_K4443J": {
+          "type": "collection_tabs",
+          "settings": {
+            "collection": "without-sale",
+            "alternative_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_tabs_GL4QYw",
+        "collection_tabs_Aah7ix",
+        "collection_tabs_gne3YJ",
+        "collection_tabs_K4443J"
+      ],
+      "settings": {
+        "title": "Favorite products",
+        "description": "<p>Chose your dream</p>",
+        "button_text": "Vue all products",
+        "products_to_show": 3
+      }
+    },
     "schema_settings_blocks_WrCWPp": {
       "type": "schema-settings-blocks",
       "blocks": {
@@ -204,21 +249,14 @@
       "settings": {
         "get_image_v_1": "shopify://shop_images/abs-workout-tire.jpg"
       }
-    },
-    "section_collection_tabs_3YBkqQ": {
-      "type": "section-collection-tabs",
-      "settings": {
-        "title": "Favorite products",
-        "description": "<p>Chose your dream</p>"
-      }
     }
   },
   "order": [
     "image_banner",
+    "section_collection_tabs_4XCw8V",
     "schema_settings_blocks_WrCWPp",
     "section_slider_products_4MzfmH",
     "section_slider_products_ETyV8X",
-    "image_get_links_9eaDtj",
-    "section_collection_tabs_3YBkqQ"
+    "image_get_links_9eaDtj"
   ]
 }
