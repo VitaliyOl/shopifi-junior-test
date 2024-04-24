@@ -1,0 +1,100 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div style="border: 1px solid orange;" >
+  <div class="page-width product-benefits-metafield__section">
+    <div class="product-benefits-metafield__wrapper">
+
+     {% for i in (1..5) %}
+              {% assign count_name = 'item_' | append: i %}
+              {% assign benefit_title = product.metafields.benefit_section[count_name].value %}
+               {% comment %} Repiter for fields in blocks {% endcomment %}
+              {% if benefit_title != blank %}
+               <div class="product-benefits-metafield__block">
+                  {{ benefit_title }} + 1
+              </div>  
+              {% endif %}
+                        
+          {% endfor %}
+
+      {% comment %} <div class="product-benefits-metafield__block">
+      {{ product.metafields.benefit_section.item_1.value }}
+    </div>
+     <div class="product-benefits-metafield__block">
+      {{ product.metafields.benefit_section.item_2.value }}
+    </div>
+     <div class="product-benefits-metafield__block">
+      {{ product.metafields.benefit_section.item_3.value }}
+    </div>
+     <div class="product-benefits-metafield__block">
+      {{ product.metafields.benefit_section.item_4.value }}
+    </div>
+    </div> {% endcomment %}
+    
+  </div>
+  
+</div>
+
+<div style="border: 1px solid orange;">
+  <div class="page-width product-benefits-metafield__section">
+      <div class="grid product-grid">
+
+       {% for i in (1..3) %}
+         {% assign count_name = 'product_' | append: i %}
+           {% assign recomendation_product = product.metafields.recomendation[count_name].value %}
+           {% if recomendation_product != blank %}
+             <li class="grid__item">
+               {% render 'card-product',
+              card_product: recomendation_product,
+              show_secondary_image: true,
+              show_vendor: true,
+              show_rating: false,
+              show_quick_add: true,
+              section_id: section.id
+            %}
+              </li>
+           {% endif %}          
+        {% endfor %}
+                  
+      </div>
+  </div>
+</div>
+
+<style>
+  .product-benefits-metafield__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 0 -15px;
+  }
+  .product-benefits-metafield__block {
+    margin: 15px;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Product BNF metafield",
+  "tag": "section",
+  "class": "section product-benefits-metafield",
+  "settings": [ 
+    {
+      "type": "paragraph",
+      "content": "This section use metafield"
+    }  
+  ],
+  "presets": [
+    {
+      "name": "Product benefits metafield"
+    }
+  ]
+}
+{% endschema %}
