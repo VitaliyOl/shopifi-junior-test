@@ -1,0 +1,314 @@
+<div class="page-width metafields-test-section__section">
+  {% if page.metafields.global.single_line_subtitle.value != blank %}
+  <hr>
+   <h3>page.metafields.global.single_line_subtitle.value</h3> 
+   <br>
+   <b>{{ page.metafields.global.single_line_subtitle.type }}</b> 
+   <br> 
+   {{ page.metafields.global.single_line_subtitle.value }}
+  {% endif %}
+  {% if page.metafields.global.url_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.url_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.url_content.type }}</b> 
+    <br>
+    <pre>
+      {{ page.metafields.global.url_content.value | json }}
+    </pre> 
+     <a href="{{ page.metafields.global.url_content.value }}">{{ page.metafields.global.url_content.value | remove: 'tel:' | remove: 'mailto:' }}</a>
+     <br>
+  {% endif %}
+  {% if page.metafields.global.multi_line_aditional_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.multi_line_aditional_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.multi_line_aditional_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.multi_line_aditional_content.value }}
+  {% endif %}
+  {% if page.metafields.global.integer_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.integer_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.integer_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.integer_content.value }}
+  {% endif %}
+   {% if page.metafields.global.decimal_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.decimal_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.decimal_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.decimal_content.value }}
+  {% endif %}
+   {% if page.metafields.global.date_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.date_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.date_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.date_content.value }} == {{ page.metafields.global.date_content.value | date: '%B %d, %Y' }}
+  {% endif %}
+  {% if page.metafields.global.date_time_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.date_time_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.date_time_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.date_time_content.value }} == {{ page.metafields.global.date_time_content.value | date: "%B %d, %Y - %H:%M" }}
+  {% endif %}
+  {% if page.metafields.global.weight_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.weight_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.weight_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.weight_content.value }}
+  {% endif %}
+  {% if page.metafields.global.liquid_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.liquid_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.liquid_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.liquid_content.value }}
+  {% endif %}
+  {% if page.metafields.global.color_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.color_content.value</h3> 
+    <br>
+    <b style="color: {{ page.metafields.global.color_content.value }};">{{ page.metafields.global.color_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.color_content.value }}
+  {% endif %}
+  {% if page.metafields.global.json_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.json_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.json_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.json_content.value }}
+  {% endif %}
+   {% if page.metafields.global.money_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.money_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.money_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.money_content.value | money_with_currency }}
+  {% endif %}
+  {% if page.metafields.global.rating_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.rating_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.rating_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.rating_content.value }}
+  {% endif %}
+  {% if page.metafields.global.boolean_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.boolean_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.boolean_content.type }}</b> 
+    <br>
+    {{ page.metafields.global.boolean_content.value }}
+  {% endif %}
+   {% if page.metafields.global.file_content.value != blank %}
+  <hr>
+    <h3>page.metafields.global.file_content.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.file_content.type }}</b> 
+    <br>
+    <pre>
+      {{ page.metafields.global.file_content.value | json }}
+    </pre> 
+    <a href="{{ page.metafields.global.file_content.value.url }}">{{ page.metafields.global.file_content.value.url }}</a>   
+    
+     <br>
+      {% assign file_url = page.metafields.global.file_content.value.url %}
+    {% assign file_name_with_shopify_extension = file_url | split: '/' | last %}
+    {% assign file_name = file_name_with_shopify_extension | split: '?' | first %}
+     <div style="display:flex; align-items:center;">
+      <img src="{{page.metafields.global.file_content.value.preview_image.src | img_url: 'icon'}}" alt=" {{ file_name }} " width='auto' height='auto'>
+      <a href="{{ page.metafields.global.file_content.value.url }}" target="_blank" style="padding-left: 10px;"> {{ file_name }}</a>
+    </div>
+  {% endif %}
+
+ {% if page.metafields.global.product_recomended.value != blank %}
+  <hr>
+    <h3>page.metafields.global.product_recomended.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.product_recomended.type }}</b> 
+     <br>
+    {{ page.metafields.global.product_recomended.value }}
+    <pre>
+       {{ page.metafields.global.product_recomended.value | json }}
+    </pre>
+   <br>
+    <a href="{{ page.metafields.global.product_recomended.value.url }}" target="_blank">
+      {{ page.metafields.global.product_recomended.value.title }} == {{ page.metafields.global.product_recomended.value.price | money_with_currency }}
+      </a>   
+    
+     <br>
+  {% endif %}
+
+   {% if page.metafields.global.page_recomended.value != blank %}
+  <hr>
+    <h3>page.metafields.global.page_recomended.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.page_recomended.type }}</b> 
+     <br>
+    {{ page.metafields.global.page_recomended.value }}
+    <pre>
+       {{ page.metafields.global.page_recomended.value | json }}
+    </pre>
+   <br>
+    <a href="{{ page.metafields.global.page_recomended.value.url }}" target="_blank">
+      {{ page.metafields.global.page_recomended.value.title }}
+      </a>   
+    <br>
+    <p>
+       {{ page.metafields.global.page_recomended.value.content }}
+    </p>
+  {% endif %}
+
+  {% if page.metafields.global.variant_recomended.value != blank %}
+  <hr>
+    <h3>page.metafields.global.variant_recomended.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.variant_recomended.type }}</b> 
+     <br>
+    {{ page.metafields.global.variant_recomended.value }}
+    <pre>
+       {{ page.metafields.global.variant_recomended.value | json }}
+    </pre>
+   <br>
+    <a href="{{ page.metafields.global.variant_recomended.value.url }}" target="_blank">
+      {{ page.metafields.global.variant_recomended.value.title }} == {{ page.metafields.global.variant_recomended.value.price | money_with_currency }}
+      </a>   
+    
+     <br>
+  {% endif %}
+
+  {% if page.metafields.global.collection_recomended_1.value != blank %}
+  <hr>
+    <h3>page.metafields.global.collection_recomended_1.value</h3> 
+    <br>
+    <b>{{ page.metafields.global.collection_recomended_1.type }}</b> 
+     <br>
+    {{ page.metafields.global.collection_recomended_1.value }}
+    <pre>
+       {{ page.metafields.global.collection_recomended_1.value | json }}
+    </pre>
+   <br>
+    <a href="{{ page.metafields.global.collection_recomended_1.value.url }}" target="_blank">
+      {{ page.metafields.global.collection_recomended_1.value.title }} == {{ page.metafields.global.collection_recomended_1.value.price | money_with_currency }}
+      </a>   
+    
+     <br>
+  {% endif %}
+
+  <hr><hr>
+  <div class="collection_recomended">
+    <div class="tab">
+      <div class="tab__headings">
+        <ul class="list">
+          {% assign first_tab = true %}
+          {% for i in (1..6) %}
+            {% assign count_name = 'collection_recomended_' | append: i %}
+            {% assign collection_obj =  page.metafields.global[count_name].value %}               
+            {% if collection_obj.all_products_count > 0 %}
+              <li class="list__item {% if first_tab == true %}active{% endif %}">
+                <a href="#" class="list__link">{{ collection_obj.title }} - {{ i }}</a>  
+              </li>          
+              {% if first_tab == true %}
+                {% assign first_tab = false %}                    
+              {% endif %}  
+            {% endif %}
+            
+          {% endfor %}
+        </ul>
+      </div>
+     
+      <div class="tab__body">
+        <ul class="list">
+          {% assign first_tab = true %}
+                {% for i in (1..6) %}
+          {% assign count_name = 'collection_recomended_' | append: i %}
+          {% assign collection_obj = page.metafields.global[count_name].value %}
+          {% if collection_obj.all_products_count > 0 %}
+            <li class="list__item {% if first_tab == true %}active{% endif %}">
+              <ul>
+                {% for product in collection_obj.products limit: 5 %}
+                  <li>{{ product.title }}</li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% if first_tab == true %}
+              {% assign first_tab = false %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <style>
+      .list {
+        list-style-type: none;
+      }
+      .list__link {
+        text-decoration: none;
+        color: #000;
+      }
+      .tab {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 2px solid #f1f1f1;
+      }
+      .tab__headings {
+        background-color: #f1f1f1;
+      }
+      .tab__headings .list__item {
+        display: inline-block;
+        padding: 10px 15px;
+      }
+      .tab__headings .list__item:not(:last-of-type) {
+        margin-right: 15px;
+      }
+      .tab__headings .list__item.active {
+        background-color: #616161;
+      }
+      .tab__headings .list__item.active .list__link {
+        color: #fff;
+      }
+      .tab__headings .list__link {
+        font-weight: 700;
+      }
+      .tab__body {
+        padding: 10px 15px;
+      }
+      .tab__body .list__item {
+        display: none;
+      }
+      .tab__body .list__item.active {
+        display: block;
+      }      
+    </style>
+
+</div>
+
+{% schema %}
+{
+  "name": "Metafields test section",
+  "tag": "section",
+  "class": "section metafields-test-section",  
+  "presets": [
+    {
+      "name": "Metafields test section"
+    }
+  ]
+}
+{% endschema %}

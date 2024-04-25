@@ -6,9 +6,14 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "metafields_test_section_4F44Rt": {
+      "type": "metafields-test-section",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "metafields_test_section_4F44Rt"
   ]
 }
