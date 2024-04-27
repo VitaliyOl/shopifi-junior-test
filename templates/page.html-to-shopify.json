@@ -1,14 +1,11 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
+    "content_with_tree_blocks_JGhiWp": {
+      "type": "content-with-tree-blocks",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "content_with_tree_blocks_JGhiWp"
   ]
 }
