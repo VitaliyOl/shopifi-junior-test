@@ -20,64 +20,106 @@
 					<div class="col-xl-6 col-lg-6 col-md-5 d-flex align-items-center">
 						<!--service heading text-->
 						<div class="section-heading-2 section-heading-2-p">
-							<h4>our services</h4>
-							<h3>Services We provides</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id. Nulla laoreet maximus feugiat. Nullam rhoncus, orci vitae convallis venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus.</p>
-							<div class="section-button">
-								<a href="#">get service</a>
+                            {% if section.settings.pre_title != blank %}
+                                <h4>{{ section.settings.pre_title }}</h4>
+                            {% endif %}
+                            {% if section.settings.title != blank %}
+                                <h3>{{ section.settings.title }}</h3>
+                            {% endif %}
+                            {% if section.settings.description != blank %}
+                                {{ section.settings.description }}
+                            {% endif %}
+                            {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+                                <div class="section-button">
+								<a href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
 							</div>
+                            {% endif %}
 						</div>
 					</div>
-					<div class="col-xl-6 col-lg-6 col-md-7">
-						<div class="row">
-							<!--service box-->
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex align-items-center">
-								<div class="single-service" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="100" data-aos-duration="1000">
-									<div class="service-icon">
-										<img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/1.png?v=1714215554" alt="" width="auto" height="auto">
-									</div>
-									<div class="service-text">
-										<h3>Theme Development</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
-									</div>
-									<div class="servive-p-1">
-										<img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/service-p-1.png?v=1714215555" alt="" width="auto" height="auto">
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 margin-top-sb-30">
-								<div class="row">
-									<!--service box-->
-									<div class="col-xl-12">
-										<div class="single-service">
-											<div class="service-icon">
-												<img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/3.png?v=1714215554" alt="" width="auto" height="auto">
-											</div>
-											<div class="service-text">
-												<h3>Digital Marketing</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
-											</div>
-										</div>
-									</div>
-									<!--service box-->
-									<div class="col-xl-12">
-										<div class="single-service service-mt-30" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="300" data-aos-duration="1000">
-											<div class="service-icon">
-												<img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/2.png?v=1714215554" alt="" width="auto" height="auto">
-											</div>
-											<div class="service-text">
-												<h3>UI/UX Design</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
-											</div>
-											<div class="servive-p-2">
-												<img src="https://cdn.shopify.com/s/files/1/0864/6249/7052/files/service-p-3.png?v=1714215555" alt="" width="auto" height="auto">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+
+                     {% if section.blocks.size > 0 %}                    
+                    <div class="col-xl-6 col-lg-6 col-md-7">
+                        <div class="row">
+                            {% for block in section.blocks %}
+                                {% case block.type %}
+                                    {% when 'Service_1_block' %}
+                                        {% if block.settings.title != blank or block.settings.description != blank %}
+                                            <!--service box-->
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex align-items-center">
+                                                <div class="single-service" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="100" data-aos-duration="1000">
+                                                    {% if block.settings.image != blank %}
+                                                        <div class="service-icon">
+                                                            <img src="{{ block.settings.image | img_url: '60x50'}}" alt="{{ block.settings.image.alt }}" width="auto" height="auto">
+                                                        </div>                                                
+                                                    {% endif %}                                    
+                                                    <div class="service-text">
+                                                        {% if block.settings.title != blank %}
+                                                            <h3>{{ block.settings.title }}</h3>                                                            
+                                                        {% endif %}
+                                                        {% if block.settings.description != blank %}
+                                                            {{ block.settings.description }}
+                                                        {% endif %}
+                                                    </div>         
+                                                    <div class="servive-p-1">                                                   
+                                                        {% render 'icons', icon: 'figure-1' %}
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                        {% endif %}
+                                    {% when 'Service_2_block' %}  
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 margin-top-sb-30">
+                                            <div class="row">
+                                                {% if block.settings.title_1 != blank or block.settings.description_1 != blank %}  
+                                                    <!--service box-->
+                                                    <div class="col-xl-12">
+                                                        <div class="single-service">
+                                                            {% if block.settings.image_1 != blank %}
+                                                                <div class="service-icon">
+                                                                    <img src="{{ block.settings.image_1 | img_url: '60x50'}}" alt="{{ block.settings.image_1.alt }}" width="auto" height="auto">
+                                                                </div>                                                                
+                                                            {% endif %}                             
+                                                            <div class="service-text">
+                                                                {% if block.settings.title_1 != blank %}
+                                                                    <h3>{{ block.settings.title_1 }}</h3>                                                            
+                                                                {% endif %}
+                                                                {% if block.settings.description_1 != blank %}
+                                                                    {{ block.settings.description_1 }}
+                                                                {% endif %}
+                                                            </div> 
+                                                        </div>
+                                                    </div>                                                    
+                                                {% endif %}
+                                                {% if block.settings.title_2 != blank or block.settings.description_2 != blank %}                                  
+                                                    <!--service box-->
+                                                    <div class="col-xl-12">
+                                                        <div class="single-service service-mt-30" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="300" data-aos-duration="1000">
+                                                            {% if block.settings.image_2 != blank %}
+                                                                <div class="service-icon">
+                                                                    <img src="{{ block.settings.image_2 | img_url: '60x50'}}" alt="{{ block.settings.image_2.alt }}" width="auto" height="auto">
+                                                                </div>                                                                
+                                                            {% endif %}   
+                                                            <div class="service-text">
+                                                                {% if block.settings.title_2 != blank %}
+                                                                    <h3>{{ block.settings.title_2 }}</h3>                                                            
+                                                                {% endif %}
+                                                                {% if block.settings.description_2 != blank %}
+                                                                    {{ block.settings.description_2 }}
+                                                                {% endif %}
+                                                            </div> 
+                                                            <div class="servive-p-2">                                                                                           
+                                                                {% render 'icons', icon: 'figure-2' %}
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    
+                                                {% endif %}      
+                                            </div>
+                                        </div>
+                                {% endcase %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+					
 				</div>
 			</div>
 		</div>
@@ -113,14 +155,120 @@
     {% schema %}
 {
   "name": "Content + 3 blocks",
-  "tag": "section",  
-  "settings": [   
+  "tag": "section",
+  "max_blocks": 2,  
+  "settings": [ 
+     {
+        "type": "text",
+        "id": "pre_title",
+        "label": "Pre-title",
+        "default": "Our Services"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Services We Provides"
+    },
+    {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "<p>We provide a range of digital solutions including website development, digital marketing, and UI/UX design. Our team of experts works collaboratively with clients to deliver custom and innovative solutions that enhance their online presence and achieve their business goals.</p>"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button_text",
+        "default": "Get Service"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link",
+        "default": "/"
+    }  
   ],
   "blocks": [ 
     {
-        "name": "Benefit blocks",
-        "type": "Benefit"
-    }   
+        "name": "Service 1 block",
+        "type": "Service_1_block",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Block content"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Service Heading",
+                "default": "Theme Development"
+            },
+            {
+                "type": "richtext",
+                "id": "description",
+                "label": "Service Description",
+                "default": "<p>Design and customize website themes using HTML, CSS, and JavaScript.</p>"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Service Image"
+            }
+        ]
+      },
+      {
+        "name": "Service 2 block",
+        "type": "Service_2_block",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Block content 1"
+            },
+            {
+                "type": "text",
+                "id": "title_1",
+                "label": "Heading",
+                "default": "Digital Marketing"
+            },
+            {
+                "type": "richtext",
+                "id": "description_1",
+                "label": "Description",
+                "default": "<p>Promote products or services through digital channels for targeted audiences.</p>"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Service Image"
+            },
+            {
+                "type": "paragraph",
+                "content": "=========="
+            },
+            {
+                "type": "header",
+                "content": "Block content 2"
+            },
+            {
+                "type": "text",
+                "id": "title_2",
+                "label": "Heading",
+                "default": "UI/UX Design"
+            },
+            {
+                "type": "richtext",
+                "id": "description_2",
+                "label": "Description",
+                "default": "<p>Create intuitive and visually appealing interfaces for optimal user experience.</p>"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Service Image"
+            }
+        ]
+      } 
   ],
   "presets": [
     {

@@ -2,6 +2,31 @@
   "sections": {
     "content_with_tree_blocks_JGhiWp": {
       "type": "content-with-tree-blocks",
+      "blocks": {
+        "service_1_block_mQfUt4": {
+          "type": "Service_1_block",
+          "settings": {
+            "title": "Theme Development",
+            "description": "<p>Design and customize website themes using HTML, CSS, and JavaScript.</p>",
+            "image": "shopify://shop_images/software-developer-on-php-code.jpg"
+          }
+        },
+        "service_2_block_Lcncrc": {
+          "type": "Service_2_block",
+          "settings": {
+            "title_1": "Digital Marketing",
+            "description_1": "<p>Promote products or services through digital channels for targeted audiences.</p>",
+            "image_1": "shopify://shop_images/team-sales-business-meeting.jpg",
+            "title_2": "UI/UX Design",
+            "description_2": "<p>Create intuitive and visually appealing interfaces for optimal user experience.</p>",
+            "image_2": "shopify://shop_images/tablet-showing-fashion-design.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "service_1_block_mQfUt4",
+        "service_2_block_Lcncrc"
+      ],
       "settings": {}
     }
   },
