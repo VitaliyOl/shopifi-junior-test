@@ -1,0 +1,24 @@
+{% case swatch_color %}
+    {% when 'grey' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'gray' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'green' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'purple' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'pink' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'olive' %}
+        <span class="color-swatch__icon color-swatch__icon--color-{{ swatch_color }}"></span>
+    {% when 'black-white-check' %}
+        <img src="{{ 'swatch-black-white-check.jpg' | asset_url }}"class="color-swatch__icon color-swatch__icon--image" alt="{{ swatch_color | replace: '-', ' ' | capitalize }}" loading="lazy" width="auto" height="auto">
+    {% when 'blue' %}
+        <img src="{{ 'swatch-blue.png' | asset_url }}"class="color-swatch__icon color-swatch__icon--image" alt="{{ swatch_color | replace: '-', ' ' | capitalize }}" loading="lazy" width="auto" height="auto">
+    {% when 'rose-gold' %}
+        <img src="{{ 'swatch-rose-gold.png' | asset_url }}"class="color-swatch__icon color-swatch__icon--image" alt="{{ swatch_color | replace: '-', ' ' | capitalize }}" loading="lazy" width="auto" height="auto">
+    {% when 'sand' %}
+        <img src="{{ 'swatch-sand.jpg' | asset_url }}"class="color-swatch__icon color-swatch__icon--image" alt="{{ swatch_color | replace: '-', ' ' | capitalize }}" loading="lazy" width="auto" height="auto">
+    {% else %}
+        <span class="color-swatch__icon color-swatch__icon--without-color">{{ swatch_color }}</span>
+{% endcase %}
