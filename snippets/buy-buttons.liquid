@@ -25,6 +25,9 @@
     -%}
 
     <product-form
+      {% if product.selected_or_first_available_variant.metafields.global.only_in_store.value %}
+        style="display: none;"
+      {% endif %}
       class="product-form"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
@@ -113,6 +116,22 @@
       </div>
     </div>
   {%- endif -%}
+
+    <div class="button-group">
+      <div class="button-in-store">
+        {% for variant in product.variants %}
+          {% if variant.metafields.global.only_in_store.value %}
+            <a href="{{ variant.metafields.global.only_in_store.value.url }}" 
+                id="button-in-store-{{ variant.id }}" class="button button-in-store--button"
+                target="_blank"
+                {% unless product.selected_or_first_available_variant.id == variant.id %}
+                  style="display: none;"                            
+                {% endunless %}
+            >Only in store</a>                        
+          {% endif %}                    
+        {% endfor %}
+      </div>
+    </div>
 
   {%- if show_pickup_availability -%}
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
