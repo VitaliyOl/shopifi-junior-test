@@ -1,15 +1,5 @@
 {
   "sections": {
-    "product_benefits_metafield_eVEjFt": {
-      "type": "product-benefits-metafield",
-      "settings": {}
-    },
-    "product_object_qxiFgP": {
-      "type": "product-object",
-      "settings": {
-        "collection": ""
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -73,7 +63,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "media_position": "left",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
@@ -81,6 +71,16 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "product_benefits_metafield_eVEjFt": {
+      "type": "product-benefits-metafield",
+      "settings": {}
+    },
+    "product_object_qxiFgP": {
+      "type": "product-object",
+      "settings": {
+        "collection": ""
       }
     },
     "related-products": {
@@ -104,9 +104,9 @@
     }
   },
   "order": [
+    "main",
     "product_benefits_metafield_eVEjFt",
     "product_object_qxiFgP",
-    "main",
     "related-products"
   ]
 }

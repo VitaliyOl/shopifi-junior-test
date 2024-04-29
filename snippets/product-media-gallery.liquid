@@ -305,4 +305,11 @@
       </button>
     </slider-component>
   {%- endif -%}
+   <div class="variant-feature--spike" 
+          {% unless product.selected_or_first_available_variant.metafields.feature.spike.value == true %}
+            style="display: none;"
+          {% endunless %}
+        >
+      The product has a spike
+   </div>
 </media-gallery>
