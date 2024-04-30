@@ -21,10 +21,11 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
-     
+      {% assign option_name = option.name | handleize %}
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
+        
 
         if swatch_count > 0 and block.settings.swatch_shape != 'none'
           if block.settings.picker_type == 'dropdown'
@@ -34,7 +35,37 @@
           endif
         endif
       -%}
-{%- if picker_type == 'swatch' -%}
+
+      {% if option_name == 'color' or option_name == 'colour' or option_name == 'laces-color' or option_name == 'laces-colour' %}
+
+           <fieldset class="js product-form__input color-swatch">
+          <legend class="form__label">{{ option.name }}</legend>
+          {%- for value in option.values -%}
+            {% assign option_value = value | handleize %}
+              <input
+                type="radio"
+                id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                name="{{ option.name }}"
+                value="{{ value | escape }}"
+                form="{{ product_form_id }}"
+                {% if option.selected_value == value %}
+                  checked
+                {% endif %}
+              >
+              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="color-swatch__block">                                                                        
+                {% render 'color-swatches-library', 
+                  product: product,
+                  option: option,
+                  block: block,
+                  picker_type: picker_type,
+                  swatch_color: option_value 
+                %}                              
+              </label>
+          {% endfor %}                 
+        </fieldset>
+
+        {% else %}
+        {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option.name }}:
@@ -47,17 +78,17 @@
             option: option,
             block: block,
             picker_type: picker_type
-          %}
-        </fieldset>
+          %}         
+        </fieldset>        
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name }} === {{ option.name }} 323232</legend>
+          <legend class="form__label">{{ option.name }}</legend>
           {% render 'product-variant-options',
             product: product,
             option: option,
             block: block,
             picker_type: picker_type
-          %}
+          %}          
         </fieldset>
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
@@ -90,10 +121,11 @@
           </div>
         </div>
       {%- endif -%}
+      {% endif %}
       
     {%- endfor -%}
     <script type="application/json">
-      {{ product.variants | json }}
+    {{ product.variants | json }}     
     </script>
   </variant-selects>
 {%- endunless -%}
