@@ -46,6 +46,9 @@
                   aria-describedby="a11y-refresh-page-message"
                 >
                   {%- for option in collection.sort_options -%}
+                    {% assign option_value_escape = option.value | escape %}
+                    {% unless option_value_escape == 'created-ascending' or option_value_escape == 'created-descending' %}
+                    
                     <option
                       value="{{ option.value | escape }}"
                       {% if option.value == sort_by %}
@@ -53,7 +56,10 @@
                       {% endif %}
                     >
                       {{ option.name | escape }}
-                    </option>
+                    </option> 
+                    
+                    {% endunless %}
+                    
                   {%- endfor -%}
                 </select>
 
