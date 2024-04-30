@@ -56,6 +56,25 @@
                     </option>
                   {%- endfor -%}
                 </select>
+
+                {% comment %} NOT RECOMENDED {% endcomment %}
+
+                {% comment %} <select name="sort_by"
+                  class="facet-filters__sort select__select caption-large"
+                  id="SortBy"
+                  aria-describedby="a11y-refresh-page-message">
+                  <option value="featured">Featured</option>
+                  <option value="price-ascending">Price: Low to High</option>
+                  <option value="price-descending">Price: High to Low</option>
+                  <option value="title-ascending">A-Z</option>
+                  <option value="title-descending">Z-A</option>
+                  <option value="created-ascending">Oldest to Newest</option>
+                  <option value="created-descending">Newest to Oldest</option>
+                  <option value="updated-ascending">Most recent update last</option>
+                  <option value="updated-descending">Most recent update first</option>
+                  <option value="random">Random</option>
+                  <option value="default">Default</option>
+                </select> {% endcomment %}
                 {% render 'icon-caret' %}
               </div>
             </div>
