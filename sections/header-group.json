@@ -20,10 +20,10 @@
         "padding_bottom": 20
       }
     },
-    "announcement-bar": {
+    "announcement_bar_3FUGCc": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement_mEnkiJ": {
           "type": "announcement",
           "settings": {
             "text": "Welcome to our store",
@@ -32,10 +32,10 @@
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_mEnkiJ"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "show_line_separator": true,
         "show_social": false,
         "auto_rotate": false,
@@ -47,6 +47,6 @@
   },
   "order": [
     "header",
-    "announcement-bar"
+    "announcement_bar_3FUGCc"
   ]
 }

@@ -3604,6 +3604,7 @@ details-disclosure > details {
   height: auto;
 }
 .color-swatch__block {
+  display: inline-block;
   filter: none;
   overflow: hidden;
   line-height: 1;
