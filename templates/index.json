@@ -14,7 +14,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -87,7 +87,7 @@
       ],
       "settings": {
         "title": "Favorite products",
-        "description": "<p>Chose your dream</p>",
+        "description": "<p>Chose your dream<\/p>",
         "button_text": "Vue all products",
         "products_to_show": 3
       }
@@ -120,13 +120,13 @@
         "offer_VRyNEt": {
           "type": "offer",
           "settings": {
-            "image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg"
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg"
           }
         },
         "offer_m4WCaR": {
           "type": "offer",
           "settings": {
-            "image": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
+            "image": "shopify:\/\/shop_images\/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
           }
         },
         "benefit_YArq9K": {
@@ -150,7 +150,7 @@
       ],
       "settings": {
         "title": "Benefits",
-        "description": "<p>Our benfit description</p>"
+        "description": "<p>Our benfit description<\/p>"
       }
     },
     "section_slider_products_4MzfmH": {
@@ -255,7 +255,7 @@
     "image_get_links_9eaDtj": {
       "type": "image-get-links",
       "settings": {
-        "get_image_v_1": "shopify://shop_images/abs-workout-tire.jpg"
+        "get_image_v_1": "shopify:\/\/shop_images\/abs-workout-tire.jpg"
       }
     }
   },
