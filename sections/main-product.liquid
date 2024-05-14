@@ -1,3 +1,49 @@
+<div class="dev-recommended-products__section" data-dev-recommended-id="{{section.id}}">
+  <div class="dev-recommended-products__wrapper">
+    <div class="dev-recommended-products__list" data-dev-recommended-list>
+    </div>
+  </div>
+</div>
+<script>
+  console.log('window.Shopify.routes.root', window.Shopify.routes.root)
+  fetch(window.Shopify.routes.root + "recommendations/products.json?product_id={{product.id}}&limit=5&intent=related")
+  .then(response => response.json())
+  .then(({ products }) => {
+    const devRecommendedSection = document.querySelector('[data-dev-recommended-id="{{section.id}}"]');
+    const devRecommendedList = devRecommendedSection.querySelector('[data-dev-recommended-list]');
+
+    function devRecommendedItem(product) {
+      const item = document.createElement('div');
+      item.classList.add('dev-recommended-products__item');
+
+      const attributes = {
+        'Title:': product.title,
+        'Product ID:': product.id,
+        'Type:': product.type,
+        'Tags:': product.tags.toString()
+      };
+
+      for (const label in attributes) {
+        const dl = document.createElement('div');
+        const dt = document.createElement('b');
+        dt.textContent = label;
+        dl.appendChild(dt);
+        const dd = document.createElement('i');
+        dd.textContent = attributes[label];
+        dl.appendChild(dd);
+        item.appendChild(dl);
+      }
+
+      return item;
+    }
+
+    products.forEach((product) => {
+      devRecommendedList.append(devRecommendedItem(product));
+    });
+  }
+);
+</script>
+
 <section
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
