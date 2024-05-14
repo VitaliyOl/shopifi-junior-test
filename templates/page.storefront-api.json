@@ -7,13 +7,13 @@
         "padding_bottom": 28
       }
     },
-    "ajax_api_iK4xAD": {
-      "type": "ajax-api",
+    "storefront_api_NBPVVa": {
+      "type": "storefront-api",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "ajax_api_iK4xAD"
+    "storefront_api_NBPVVa"
   ]
 }

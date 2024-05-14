@@ -1,0 +1,178 @@
+<div class="{% if section.settings.include_margins %}page-width{% endif %}">
+123 545454
+</div>
+
+<script>
+ 
+
+const url = "https://test-junior-academy.myshopify.com/api/2021-07/graphql.json";
+const accessToken = "07dbb0c3305bbc5548af6fbeed080aec";
+
+const headers = {
+  "Content-Type": "application/json",
+  "X-Shopify-Storefront-Access-Token": accessToken
+};
+
+const data = {
+  query: `
+    {
+      shop {
+        name
+        id
+        description
+        paymentSettings {
+          currencyCode
+        }
+        primaryDomain {
+          host
+          url
+        }
+        brand {
+          colors {
+            primary {
+              background
+            }
+          }
+        }
+      }
+    }
+  `
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => {
+  // Handle the response data hereкК
+  console.log(data);
+})
+.catch(error => {
+  // Handle errors here
+  console.error(error);
+}); 
+
+
+{% comment %} const url = "https://test-junior-academy.myshopify.com/api/2021-07/graphql.json";
+const accessToken = "07dbb0c3305bbc5548af6fbeed080aec";
+
+const headers = {
+  "Content-Type": "application/json",
+  "X-Shopify-Storefront-Access-Token": accessToken
+};
+
+const mutation = `
+  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+    customerAccessTokenCreate(input: $input) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        message
+      }
+    }
+  }
+`;
+{% comment %} 039c852c96c3f7502f9114514647e800 {% endcomment %}
+const variables = {
+  input: {
+    email: "celebrate@gmail.com",
+    password: "123aaa"
+  }
+};
+
+const data = {
+  query: mutation,
+  variables: variables
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => {
+  // Handle the response data here
+  console.log(data, 'customer-data');
+})
+.catch(error => {
+  // Handle errors here
+  console.error(error);
+}); {% endcomment %}
+
+{% comment %} change custoner Info {% endcomment %}
+
+
+{% comment %} const url = "https://test-junior-academy.myshopify.com/api/2021-07/graphql.json";
+const accessToken = "07dbb0c3305bbc5548af6fbeed080aec";
+
+const headers = {
+  "Content-Type": "application/json",
+  "X-Shopify-Storefront-Access-Token": accessToken
+};
+
+const mutation = `
+  mutation ($token: String!) {
+    customerUpdate(customerAccessToken: $token,  customer: {   firstName: "Postman", 	acceptsMarketing: true  }, ) {
+      customer {
+        id
+        email
+        firstName
+        lastName
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+
+`;
+{% comment %} 039c852c96c3f7502f9114514647e800 {% endcomment %}
+const variables = {
+  "token": "039c852c96c3f7502f9114514647e800"
+}
+
+const data = {
+  query: mutation,
+  variables: variables
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => {
+  // Handle the response data here
+  console.log(data, 'customer-data');
+})
+.catch(error => {
+  // Handle errors here
+  console.error(error);
+}); {% endcomment %}
+
+
+
+</script>
+
+  {% schema %}
+  {
+    "name": "Storefront API",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+    ],
+    "presets": [
+      {
+        "name": "Storefront API"
+      }
+    ]
+  }
+  {% endschema %}
