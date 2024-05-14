@@ -1,0 +1,254 @@
+<div class="dev-recommended-cart-api__section page-width">
+  <div class="dev-recommended-cart-api__wrapper">
+    <h2>Development Cart API</h2>
+    <div class="dev-recommended-cart-api__form" data-dev-cart-api-form>
+        <table>
+            <tbody>
+                <tr>
+                    <td><input type="text" value="dinamic-football-shoes" data-dev-cart-api-value> Fill product value</td>
+                    <td>Product ID/Variant ID/Product Handle</td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td><input type="number"> Fill qty</td>
+                        <td><button data-dev-cart-api-add>Add to cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number"> Fill qty</td>
+                        <td><button data-dev-cart-api-change>Change to</button></td>
+                    </tr>
+                    <tr>
+                        <td><button data-dev-cart-api-remove>Remove from cart</button></td>
+                    </tr>
+                </tr>
+            </tbody>
+
+        </table>
+    </div> 
+    <div class="dev-recommended-cart-api__list" data-dev-recommended-list>
+    </div>    
+  </div>
+</div>
+<script>
+  function getCart() {
+    fetch('/cart.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Create table
+      const table = document.createElement('table');
+  
+      // Crate table head
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const headers = ['Title', 'Product ID', 'Variant ID', 'handle', 'Qty'];
+  
+      headers.forEach(headerText => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+      });
+  
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+  
+      // Create table rows
+      const tbody = document.createElement('tbody');
+      data.items.forEach(item => {
+        const prop = item.properties
+        console.log(prop, "prop")
+        const row = document.createElement('tr');
+        const rowData = [item.title, item.product_id, item.variant_id, item.handle, item.quantity];
+  
+        rowData.forEach(cellData => {
+          const cell = document.createElement('td');
+          cell.textContent = cellData;
+          row.appendChild(cell);
+        });
+  
+        tbody.appendChild(row);
+      });
+  
+      table.appendChild(tbody);
+  
+      // Init table wrapper
+      const container = document.querySelector('[data-dev-recommended-list]');
+      container.innerHTML = '';
+      container.appendChild(table);
+    })
+    .catch(error => {
+      console.error('Error getting list of products in cart:', error);
+    });
+  }
+  getCart();
+
+  {% comment %} Add to CART {% endcomment %}
+  const ajaxAddBtn = document.querySelector('[data-dev-cart-api-add]');
+  ajaxAddBtn.addEventListener("click", (event) => {
+    const qty = event.currentTarget.closest("tr").querySelector('input').value || 1;
+    const handle = event.currentTarget.closest('[data-dev-cart-api-form]').querySelector('[data-dev-cart-api-value]').value;
+    var variantId;
+    fetch(window.Shopify.routes.root + 'products/'+handle+'.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data, 'ProductData')
+       const variantId = data.variants[0].id;
+       addToCart(variantId, qty)
+    }) 
+    .catch(error => {
+      console.error('Error getting list of product:', error);
+    }); 
+    function addToCart(variantId, variantQty) {
+      const itemsData = {
+        items: [
+          {
+            quantity: variantQty,
+            id: variantId,
+            properties: {
+              color: 'red',              
+              size: 'big'
+            }
+          }
+        ]
+      };
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(itemsData)
+    })
+      .then(response => {
+        if (response.ok) {
+          getCart(); // Rebuild actual cart
+        } else {
+          console.error('Error. Product doesn`t add to cart ', response.status);
+        }
+      })
+      .catch(error => {
+        console.error('Error with send request', error);
+      });
+    }
+  });
+
+{% comment %} UPDATE CART {% endcomment %}
+const ajaxUpdateBtn = document.querySelector('[data-dev-cart-api-change]');
+ajaxUpdateBtn.addEventListener("click", (event) => {
+  const qty = event.currentTarget.closest("tr").querySelector('input').value || 1;
+  const handle = event.currentTarget.closest('[data-dev-cart-api-form]').querySelector('[data-dev-cart-api-value]').value;
+  var variantId;
+  fetch(window.Shopify.routes.root + 'products/'+handle+'.js', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+     const variantId = data.variants[0].id;
+     updateCart(variantId, qty)
+  }) 
+  .catch(error => {
+    console.error('Error getting list of product:', error);
+  }); 
+  function updateCart(variantId, variantQty) {
+    const itemsData = {
+      updates: {
+        [variantId]: variantQty
+      }
+    };
+    console.log(itemsData, "itemsData")
+  fetch(window.Shopify.routes.root + 'cart/update.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(itemsData)
+  })
+    .then(response => {
+      if (response.ok) {
+        getCart(); // Rebuild actual cart
+      } else {
+        console.error('Error. Product doesn`t update', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error with send request', error);
+    });
+  }
+});
+
+{% comment %} REMOVE CART ITEM{% endcomment %}
+const ajaxRemoveBtn = document.querySelector('[data-dev-cart-api-remove]');
+ajaxRemoveBtn.addEventListener("click", (event) => {
+  const handle = event.currentTarget.closest('[data-dev-cart-api-form]').querySelector('[data-dev-cart-api-value]').value;
+  var variantId;
+  fetch(window.Shopify.routes.root + 'products/'+handle+'.js', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+     const variantId = data.variants[0].id;
+     removeFromCart(variantId, 0)
+  }) 
+  .catch(error => {
+    console.error('Error getting list of product:', error);
+  }); 
+  function removeFromCart(variantId, variantQty) {
+    const itemsData = {
+      updates: {
+        [variantId]: variantQty
+      }
+    };
+  fetch(window.Shopify.routes.root + 'cart/update.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(itemsData)
+  })
+    .then(response => {
+      if (response.ok) {
+        getCart(); // Rebuild actual cart
+      } else {
+        console.error('Error. Product doesn`t update', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error with send request', error);
+    });
+  }
+});
+</script>
+
+
+
+
+
+  {% schema %}
+  {
+    "name": "AJAX API",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+    ],
+    "presets": [
+      {
+        "name": "AJAX API"
+      }
+    ]
+  }
+  {% endschema %}
+   
