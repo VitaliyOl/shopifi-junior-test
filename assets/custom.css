@@ -62,12 +62,7 @@
 .slider-product-proposal {
   padding: 50px 0;
 }
-.page-width {
-}
-.slider-product-proposal__container {
-}
-.slider-product-proposal__content {
-}
+
 .slider-product-proposal__title {
   display: block;
   width: 100%;
@@ -83,15 +78,13 @@
   text-align: center;
   margin-bottom: 30px;
 }
-.slider-product-proposal__slider {
-}
+
 .slider-product-proposal__control {
   position: relative;
   display: block;
   width: 100%;
 }
-.slider-product-proposal__slider-list {
-}
+
 .slider-product-proposal__slider-item {
   overflow: hidden;
 }
@@ -118,10 +111,4 @@ a.slider-item__link {
 
 a.slider-item__link:hover + .slider-item__image .slider-item__picture {
   transform: scale(1.1);
-}
-.slider-item__title {
-}
-.slider-item__content {
-}
-.slider-item__price {
 }
