@@ -1,0 +1,36 @@
+{{ 'component-accordion-test.css' | asset_url | stylesheet_tag }}
+
+<div class="accordeon">
+  <ul class="accordeon__list">
+    <li class="accordeon__item active">
+      <div class="accordeon__heading">
+        <span class="accordeon__link">Description</span>
+      </div>
+      <div class="accordeon__content">
+       {{ product.description }}
+      </div>
+    </li>
+    {% if block.settings.show_accordion_1 == true and block.settings.accordion_title_1 != blank and block.settings.accordion_content_1 != blank %}
+      <li class="accordeon__item">
+      <div class="accordeon__heading">
+        <span class="accordeon__link">{{ block.settings.accordion_title_1 }}</span>
+      </div>
+      <div class="accordeon__content">
+       {{ block.settings.accordion_content_1 }}
+      </div>
+    </li>
+    {% endif %}
+    {% if block.settings.show_accordion_2 == true and block.settings.accordion_title_2 != blank and block.settings.accordion_content_2 != blank %}
+      <li class="accordeon__item">
+      <div class="accordeon__heading">
+        <span class="accordeon__link">{{ block.settings.accordion_title_2 }}</span>
+      </div>
+      <div class="accordeon__content">
+       {{ block.settings.accordion_content_2 }}
+      </div>
+    </li>
+    {% endif %}
+    
+    
+  </ul>
+</div>

@@ -70,6 +70,17 @@
             "content": "<p>original row<\/p>",
             "page": "default-template-1"
           }
+        },
+        "product_accordion_GgT94b": {
+          "type": "product-accordion",
+          "settings": {
+            "show_accordion_1": true,
+            "accordion_title_1": "shiping",
+            "accordion_content_1": "<p>Accordion content 1<\/p>",
+            "show_accordion_2": true,
+            "accordion_title_2": "shiping",
+            "accordion_content_2": "<p>accordion title 2<\/p>"
+          }
         }
       },
       "block_order": [
@@ -83,7 +94,8 @@
         "share",
         "collapsible_test_PfA7Az",
         "collapsible_test_C3CbqC",
-        "collapsible_tab_8AwRTX"
+        "collapsible_tab_8AwRTX",
+        "product_accordion_GgT94b"
       ],
       "settings": {
         "enable_sticky_info": true,

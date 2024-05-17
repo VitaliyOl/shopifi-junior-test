@@ -45,3 +45,28 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).on("click", ".list__link", (e) => toggleTubs(e));
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  function toggleAccordion(event) {
+    event.preventDefault();
+    let parentItem = event.currentTarget.parentElement.parentElement;
+    let itemActive = parentItem.classList.contains("active");
+    let accordionList = parentItem.parentElement.children;
+
+    function activateAccordionShowOne(element, isActive, elements) {
+      if (isActive) {
+        element.classList.remove("active");
+      } else {
+        Array.from(elements).forEach((item) => item.classList.remove("active"));
+        element.classList.add("active");
+      }
+    }
+
+    // Раскрывается только один
+    activateAccordionShowOne(parentItem, itemActive, accordionList);
+  }
+
+  document.querySelectorAll(".accordeon__link").forEach(function (link) {
+    link.addEventListener("click", toggleAccordion);
+  });
+});

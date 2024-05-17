@@ -306,6 +306,8 @@
                     </div>
                   </details>
                 </div>
+                 {%- when 'product-accordion' -%}
+                {% render 'product-accordion', block: block %}
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -1317,6 +1319,47 @@
           "id": "page",
           "label": "hello page"
         }
+      ]
+    },
+    {
+      "type": "product-accordion",
+      "name": "Product Accordion",
+	    "limit": 1,
+      "settings": [
+	      {
+          "type": "checkbox",
+          "id": "show_accordion_1",
+          "label": "Show accordion 1",
+	        "default": true 
+        },
+        {
+          "type": "text",
+          "id": "accordion_title_1",          
+          "label": "accordion title 1",
+	        "default": "testing_1"
+        },                     
+        {
+          "type": "richtext",
+          "id": "accordion_content_1",
+          "label": "Accordion content 1"
+        },
+	      {
+          "type": "checkbox",
+          "id": "show_accordion_2",
+          "label": "Show accordion 2",
+	        "default": false
+        },
+        {
+          "type": "text",
+          "id": "accordion_title_2",          
+          "label": "accordion title 2",
+	        "default": "testing_2"
+        },                  
+        {
+          "type": "richtext",
+          "id": "accordion_content_2",
+          "label": "Accordion content 2"
+        }         
       ]
     },
     {
