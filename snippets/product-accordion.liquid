@@ -1,10 +1,10 @@
 {{ 'component-accordion-test.css' | asset_url | stylesheet_tag }}
 
-<div class="accordeon">
+<div class="accordeon" {{ block.shopify_attributes }}>
   <ul class="accordeon__list">
     <li class="accordeon__item active">
       <div class="accordeon__heading">
-        <span class="accordeon__link">Description</span>
+        <span class="accordeon__link">Description</span>       
       </div>
       <div class="accordeon__content">
        {{ product.description }}

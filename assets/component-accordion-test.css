@@ -1,21 +1,21 @@
 .accordeon {
   max-width: 800px;
   margin: 0 auto;
-  border: 2px solid #f1f1f1;
 }
 .accordeon__list {
   list-style-type: none;
+  padding: 0;
 }
 .accordeon__item {
   display: block;
 }
 
 .accordeon__heading {
-  background-color: #f1f1f1;
+  cursor: pointer;
 }
 .accordeon__link {
   display: block;
-  padding: 10px 15px;
+  padding: 10px 0px;
   color: #000;
   text-decoration: none;
   font-weight: 700;
@@ -23,13 +23,12 @@
 .accordeon__content {
   display: none;
   padding: 10px 15px;
+  transition: 3s all ease-in-out;
 }
 
 .accordeon__item.active .accordeon__heading {
-  background-color: #616161;
 }
 .accordeon__item.active .accordeon__link {
-  color: #fff;
 }
 .accordeon__item.active .accordeon__content {
   display: block;
