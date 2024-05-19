@@ -3685,10 +3685,10 @@ details-disclosure > details {
 }
 
 /* from slider images to left start */
-@media (min-width: 1024px) {
-  .product--thumbnail_slider {
+@media (min-width: 768px) {
+  /* .product--thumbnail_slider {
     position: relative;
-  }
+  } */
   .product--thumbnail_slider media-gallery {
     display: flex;
     flex-direction: row-reverse;
