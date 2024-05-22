@@ -3692,7 +3692,7 @@ details-disclosure > details {
   .thumbnail-slider.slider-mobile-gutter.quick-add-hidden.small-hide {
     max-height: 550px;
     overflow-y: auto;
-    padding-top: 115px;
+    align-items: baseline;
   }
 
   .thumbnail-slider.slider-mobile-gutter.quick-add-hidden.small-hide::-webkit-scrollbar {
