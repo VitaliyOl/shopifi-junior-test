@@ -169,10 +169,28 @@
                                 {%- for option in item.options_with_values -%}
                                   <div class="product-option">
                                     <dt>{{ option.name }}:</dt>
-                                    <dd>
+                                    {% comment %} <dd>
                                       {{ option.value -}}
                                       {%- unless forloop.last %}, {% endunless %}
-                                    </dd>
+                                    </dd> {% endcomment %}
+                                    <dd>
+                                        {% assign option_value = option.value | handleize %}
+                                        {% assign option_name_lower = option.name | downcase %}
+                                        {% if option_name_lower == 'color' or option_name_lower == 'colour' or option_name_lower == 'laces-color' or option_name_lower == 'laces-colour' %}
+                                          <label class="color-swatch__block checkout-color-swatch">
+                                            {% render 'color-swatches-library', 
+                                              product: item.product,
+                                              option: option,
+                                              block: block,
+                                              picker_type: picker_type,
+                                              swatch_color: option_value 
+                                            %}
+                                          </label>
+                                        {% else %}
+                                          {{ option.value }}
+                                        {% endif %}
+                                        {%- unless forloop.last %}, {% endunless %}
+                                     </dd>
                                   </div>
                                 {%- endfor -%}
                               {%- endif -%}

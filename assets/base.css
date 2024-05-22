@@ -3625,12 +3625,18 @@ details-disclosure > details {
   filter: drop-shadow(0px 0px 2px #808080);
 }
 .color-swatch__icon {
-  display: inline-block;
+  display: inline-block !important;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   cursor: pointer;
 }
+
+.checkout-color-swatch .color-swatch__icon {
+  width: 15px;
+  height: 15px;
+}
+
 .color-swatch__icon--image {
   object-fit: cover;
   object-position: center;
