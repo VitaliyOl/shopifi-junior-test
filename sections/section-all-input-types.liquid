@@ -175,6 +175,29 @@
   {% endif %}
 </div>
 
+{% comment %} pagination from documentation!!! {% endcomment %}
+
+{% comment %} <div>
+{% liquid
+  paginate pages by 2
+  for page in pages
+    echo page.title | link_to: page.url
+  endfor
+  echo paginate | default_pagination
+endpaginate %}
+</div> {% endcomment %}
+
+{% comment %} <div>
+{% liquid
+  paginate pages by 2
+  for item in collection
+    echo item.title | link_to: item.url
+    
+  endfor
+  echo paginate | default_pagination
+endpaginate %}
+</div> {% endcomment %}
+
 {% schema %}
 {
   "name": "Section all input types",
